@@ -1,6 +1,5 @@
 package org.net3;
 
-import org.net.Demo;
 import org.net.Demo1;
 import org.net.Demo2;
 import org.net2.Demo3;
@@ -14,9 +13,8 @@ public class Demo6 {
 public static void main(String[]args){
         Demo6 demo6= new Demo6();
         demo6.dem7();
-
         Demo5 demo5 = new Demo5();
-        demo5.dem6();
+
     Demo4 demo4 = new Demo4();
             demo4.dem5();
     Demo3 demo3= new Demo3();
@@ -24,9 +22,7 @@ public static void main(String[]args){
     Demo2 demo2 = new Demo2();
             demo2.dem3();
     Demo1 demo1 = new Demo1();
-    demo1.dem1();
-    Demo demo = new Demo();
-    demo.dem2();
+
 
 
 
