@@ -9,3 +9,4 @@ public class Redmi extends Nokia {
         redmi.red();
     }
 }
+
