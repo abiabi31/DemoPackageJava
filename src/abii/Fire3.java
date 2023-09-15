@@ -1,25 +1,32 @@
 package abii;
 
+import java.util.Scanner;
 public class Fire3 {
-	//array//
-	public void air3() {
-	int[] a= new int[5];
-	a[0]=10;
-	a[1]=20;
-	a[2]=30;
-	a[3]=40;
-	a[4]=50;
-	System.out.println(a[3]);
+         //data type//
+     	Scanner scanner = new Scanner(System.in);
+		int a=scanner.nextInt();
+		public void water (int number) {
+			System.out.println(number+100);		
+		}
+	    public void water1 (String name) {
+		System.out.println("String name:"+name);
+	}
+//data type count
+    public void water2(String name,int age,double number ) {
+	System.out.println("String:"+name+"\n"+"age is:"+age+"\n"+" Hight is:"+number);
+    }
+//data type order//
+    public void water3(int number,double volu,String name ){
+	System.out.println("number is:"+number+"\n"+"double"+volu+"\n"+"string name:"+name);
 	
-	int[][] b=new int[4][4];
-              b[0][0]=10;
-    		  b[0][1]=20;
-    		  b[0][2]=30;
-    		  b[0][3]=40;
-    		  System.out.println(b[0][1]);
-    		  
-}public static void main(String[] args) {
-	Fire3 fire3 =new Fire3();
-	fire3.air3();
-}
-}
+}// overriding//
+    public void interest(){
+		System.out.println("inerest of 5%");
+	}
+	   public void interest1() {
+	   System.out.println("inerest of 10% ");
+
+	}
+	   
+}	
+  

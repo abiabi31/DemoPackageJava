@@ -6,7 +6,7 @@ public class Fire {
 	public void air() {
 		int a;
 		Scanner abi =new Scanner(System.in);
-		System.out.println("Cars");
+		System.out.println("Enter to Cars");
 		a =abi.nextInt();
 	if(a<=10) {
 		System.out.println("rolls Roys");
@@ -41,8 +41,5 @@ public class Fire {
 		
 	}
 	
-	}public static void main(String[] args) {
-		Fire fire= new Fire();
-		fire.air();
 	}
 }
