@@ -37,9 +37,7 @@ public class Fire {
 	}
 	else {
 		System.out.println("LAMBORGHINI");
-		
-		
+			
 	}
-	
 	}
 }
