@@ -1,0 +1,55 @@
+<center>
+☠☠<input  id="ak" onkeyup="ekj()">☠☠
+<h4 id="ek"></h4>
+<center>
+    <BUtton> <a href="D:\a.js\adding\studentform.html">home</a></BUtton>
+     
+</center>
+<SCRipt>
+var  ak= document.getElementById("ak")
+var  ek= document.getElementById("ek")
+function ekj(){
+    ek.textContent=ak.value
+
+}
+
+</SCRipt>
+
+<style>
+    #ak{
+        background-image: url(img/as.jfif );
+        /* background-color: red; */
+       cursor:grab; color:rgb(255, 0, 191) ;
+        background-size: 400% 400%;
+       animation: background1  10s;
+        /* background-image:linear-gradient(43deg,pink,yellow,aqua,rgb(165, 253, 65)); */
+       border-radius: 10px;
+    }
+    body{
+    
+        background-image: url(img/as.jfif);
+      background-color: blue;
+      background-size: 200% 200%;
+       animation: background1 70s;
+        /* background-image:linear-gradient(43deg,pink,yellow,aqua,rgb(165, 253, 65)); */
+    }
+
+    center{
+        margin-top: 5.5cm;
+    }
+    @keyframes background1{
+        0%{
+           background-position: 0 50%; 
+        }
+        50%{
+            background-position: 100% 50%;
+        }
+        100%{
+            background-position: 0 50%;
+        }
+
+    }
+    #ek{
+        color: rgb(255, 0, 170);
+    }
+</style>

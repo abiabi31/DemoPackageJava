@@ -1,0 +1,27 @@
+<input id=" guessnumber">
+<button onclick="click()">check</button>
+<p id="result">woring/right</p>
+<p id="score"> score:10</p>
+
+<script>
+    var guessnumb = document.getElementById("guessnumber")
+    var res = document.getElementById("result")
+    var sco = document.getElementById("score")
+    var randomnum = Math.floor(Math.random()*1)
+    var score =10
+    
+ function click(){
+    var enterednum = guessnumb.Value
+    if ( randomnum==enterednum){ 
+    
+        res.textContent ="Right"
+        alert("you wom....")
+        
+    }
+    else{
+          score=score-1
+          sco.textContent="score:"+score
+  res.textContent="worng"
+    }
+ }
+</script>

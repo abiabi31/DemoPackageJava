@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tree" type="text" placeholder="type any number"> 
+    <input id="tree1"  type="text" placeholder="type any number">
+    <button onclick="add()">add</button>
+    <h3 id="tree2">result</h3>
+
+
+    <script>
+        let box1 = document.getElementById("tree")
+        let box2 = document.getElementById("tree1")
+        let box3 = document.getElementById("tree2")
+        
+      
+        function add(){
+            let box1Value =  Number(box1.value)
+            let box2Value =   Number(box2.value)
+            let total =box1Value + box2Value
+            let result  = tree2.textContent = total
+        }
+    </script>
+
+</body>
+</html>

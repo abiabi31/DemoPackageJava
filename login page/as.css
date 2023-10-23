@@ -1,0 +1,76 @@
+/* button{
+    background-color: red;
+    color: yellow;
+border-top-left-radius:1000px;
+border-top-right-radius: 10000px;
+border-style: double
+
+}
+
+.ggt{
+    color: rgb(255, 251, 0);
+    background-color: rgb(252, 11, 11);
+    
+}
+p{
+    color: gold;
+    
+}
+body{
+   border: 2px solid ridge;
+background-size: 100%;
+margin-top: 8cm;
+animation: 1px;;
+}
+img{
+    width: 200px;
+} */
+/* h1{
+    color: red;
+padding: 50px;
+background-color: rgb(242, 243, 238);
+margin: 100px;
+border: 15px solid red;
+/* border-radius: 6cm; */
+/* width: 15cm;
+height: 5cm; }
+*/
+body {
+    border: solid rgb(255, 0, 0);
+    border-width: 1cm;
+    padding: 3cm;
+    margin: 4cm;
+background:linear-gradient(red,pink,blue,rgb(10, 238, 10),yellow) ;
+
+}
+
+button {
+    margin-right: 0.5cm;
+    margin-top: 0.5cm;
+   border: solid green;
+    border-radius: 5cm;
+    background: linear-gradient(gold,red,blue);
+    color: rgb(3, 58, 5);
+}
+
+.fak {
+    background-color: red;
+    width: 1cm;
+    border-radius: 20cm;
+    margin-top: 7cm;
+
+}
+
+.hak {
+    background-color: red;
+    width: 10cm;
+    border-radius: 20cm;
+
+
+}
+
+input {
+    background-color: red;
+    width: 10cm;
+    border-radius: 20cm;
+}
