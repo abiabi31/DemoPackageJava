@@ -1,0 +1,86 @@
+@charset "ISO-8859-1";
+#ds {
+    height: 500px;
+    width: 10cm;
+    padding: 0.5cm;
+    box-shadow: 0 0 100px rgb(31, 20, 20);
+    border-radius: 10px;
+   
+    color:rgb(22, 22, 21);
+ 
+}
+
+
+#fs {
+    background-color: rgb(231, 233, 221);
+    margin-bottom: 9px;
+    padding-top: 10px;
+    padding-bottom: 9px;
+    border-radius: 10px;
+    
+
+}
+#charWarning{
+    font-size: 10PX;
+    margin-left: 3cm;
+    margin-bottom: -20px;
+}
+#im{
+width: 10px;
+}
+#na{
+    margin-left:50px;
+    margin-bottom: 30PX;
+}
+
+#ab {
+    margin-right: 10px;
+}
+
+#ac {
+    margin-left: 37px;
+}
+
+#ad {
+    margin-left: 60px;
+
+}
+
+#value-input-3 {
+    width: 4.5cm;
+}
+
+#af {
+    margin-left: 100px;
+}
+
+#ag {
+    margin-left: 100px;
+}
+
+#nu {
+    margin-left: 50px;
+}
+
+#em {
+    margin-left: 70px;
+}
+
+#la {
+    margin-left: 50px;
+
+}
+
+
+button{
+    width: 100px;
+}
+body{
+    background-color:rgb(128, 128, 255);
+    height:16cm;
+    background-size: 200% 200%;
+    animation: background1 0.1s;
+    
+}
+
+
