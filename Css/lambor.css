@@ -1,0 +1,29 @@
+.h {
+    color: brown;
+    
+}
+body{
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+.ho{
+   
+    color: rgb(229, 241, 228);
+    text-align: right;
+    
+} 
+   .ho:hover {
+    color: hotpink;
+  } 
+    .img {
+        animation-name: im;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+      }
+  @keyframes im {
+    0%   {filter: hue-rotate(0deg);}
+    25%  {filter: hue-rotate(90deg);}
+    50%  {filter: hue-rotate(180deg);}
+    100% {filter: hue-rotate(360deg);}
+  }
+  
