@@ -1,0 +1,108 @@
+/* 🔥 Fixed Header */
+/* .fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  z-index: 1200;
+  backdrop-filter: blur(6px);
+} */
+/* .fixed-header {
+  background: linear-gradient(145deg, #000000, #111111) !important;
+  border-bottom: 1px solid gold;
+  backdrop-filter: blur(10px);
+} */
+.fixed-header {
+  background: linear-gradient(145deg, #000000, #1a1a1a) !important;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* border-bottom: 1px solid rgba(255, 215, 0, 0.4); */
+
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(255, 215, 0, 0.2);
+
+  transform: translateZ(0);
+  transition: all 0.4s ease;
+}
+.fixed-header:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(255, 215, 0, 0.4);
+}
+.site-title {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: gold;
+
+  transform-style: preserve-3d;
+
+  text-shadow:
+    2px 2px 0 #000,
+    4px 4px 12px rgba(255, 215, 0, 0.9),
+    0 0 10px rgba(255, 215, 0, 0.6);
+
+  animation: float3D 2s ease-in-out infinite;
+}
+
+/* 🔥 Smooth Floating 3D Animation */
+@keyframes float3D {
+  0% {
+    transform: perspective(600px) rotateX(10deg) rotateY(-10deg);
+  }
+  50% {
+    transform: perspective(600px) rotateX(-10deg) rotateY(10deg);
+  }
+  100% {
+    transform: perspective(600px) rotateX(10deg) rotateY(-10deg);
+  }
+}
+/* 🔥 Navigation 3D Hover Effect */
+.nav-links {
+  display: flex;
+}
+
+.nav-links .nav-link {
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+/* 3D Tilt on Hover */
+.nav-links .nav-link:hover {
+  color: gold;
+  transform: perspective(500px) rotateX(10deg) rotateY(10deg) scale(1.1);
+}
+
+/* Underline Glow */
+.nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: gold;
+  transition: width 0.3s ease;
+}
+
+.nav-links .nav-link:hover::after {
+  width: 100%;
+}

@@ -1,37 +1,143 @@
-.home-page {
-  display: flex;
-  justify-content: end;
-  /* background-color: rgb(130, 212, 35); */
-  gap: 20px;
-  padding: 20px;
+body {
+  margin: 0;
+  overflow-x: hidden;
 }
 
-.image-container img {
+html {
+  scroll-behavior: smooth;
+}
+
+.main-container {
+  min-height: 100vh;
   width: 100%;
-  margin-top: 10px;
-  height: 350px;
-}
-
-.dots {
   display: flex;
   justify-content: center;
-  margin-top: 12px;
-  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content */
+.content {
+  text-align: center;
+  color: white;
+  width: 70%;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px #00f2ff,
+    0 0 20px #00f2ff;
+  animation: slideDown 0.8s ease forwards;
+}
+
+.quote {
+  font-style: italic;
+  line-height: 1.6;
+  color: #ffffff;
+  text-shadow:
+    0 0 5px #ff00ff,
+    0 0 10px #ff00ff;
+  animation: quoteAnimation 1.2s ease forwards;
+}
+
+/* Animations */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes quoteAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 40px;
 }
 
 .dot {
-  width: 12px;
   height: 12px;
+  width: 12px;
+  margin: 0 6px;
+  background-color: #bbb;
   border-radius: 50%;
-  background-color: #15ddb2;
+  display: inline-block;
   cursor: pointer;
-  transition:
-    background-color 0.3s,
-    transform 0.3s;
+  transition: 0.3s;
 }
 
-/* active dot */
 .dot.active {
-  background-color: red;
+  background-color: white;
   transform: scale(1.3);
+}
+.overlay button {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.travel-btn {
+  background: linear-gradient(145deg, #000000, #1a1a1a);
+  color: gold;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 40px;
+  letter-spacing: 1px;
+  border: 1px solid gold;
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    0 0 10px rgba(255, 215, 0, 0.3);
+
+  transition: all 0.3s ease;
+}
+
+.travel-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.8);
+  background: linear-gradient(145deg, #111, #000);
+}
+
+.travel-btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
 }

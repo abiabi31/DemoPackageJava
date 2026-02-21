@@ -1,5 +1,7 @@
 export const ROUTES = {
   // LOGIN: "/login",
-  DASHBOARD: "/",
+  // DASHBOARD: "/",
   // PROFILE: "/profile",
+  HOME_PAGE: "/home",
+  BLOG: "/blogs",
 };
