@@ -65,7 +65,7 @@ function Blog() {
       } else {
         pageFlip.flip(0);
       }
-    }, 1000); // 🔥 3 seconds
+    }, 5000); // 🔥 3 seconds
 
     return () => clearInterval(interval);
   }, []);

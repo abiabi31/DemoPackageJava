@@ -55,7 +55,7 @@ function HomePage() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Box
         id="slider-section"
         className="main-container"
