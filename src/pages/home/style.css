@@ -1,13 +1,13 @@
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-.main-container {
+.home-page {
+  width: 100%;
+  color: #fff;
+}
+
+.home-page .main-container {
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -26,7 +26,7 @@ html {
   overflow: hidden;
 }
 /* Overlay */
-.overlay {
+.home-page .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -37,13 +37,13 @@ html {
 }
 
 /* Content */
-.content {
+.home-page .content {
   text-align: center;
   color: white;
   width: 70%;
 }
 
-.title {
+.home-page .title {
   margin-bottom: 20px;
   font-weight: bold;
   color: #ffffff;
@@ -53,7 +53,7 @@ html {
   animation: slideDown 0.8s ease forwards;
 }
 
-.quote {
+.home-page .quote {
   font-style: italic;
   line-height: 1.6;
   color: #ffffff;
@@ -87,12 +87,12 @@ html {
 }
 
 /* Dots */
-.dots {
+.home-page .dots {
   position: absolute;
   bottom: 40px;
 }
 
-.dot {
+.home-page .dot {
   height: 12px;
   width: 12px;
   margin: 0 6px;
@@ -103,16 +103,16 @@ html {
   transition: 0.3s;
 }
 
-.dot.active {
+.home-page .dot.active {
   background-color: white;
   transform: scale(1.3);
 }
-.overlay button {
+.home-page .overlay button {
   margin-top: 20px;
   align-self: center;
 }
 
-.travel-btn {
+.home-page .travel-btn {
   background: linear-gradient(145deg, #000000, #1a1a1a);
   color: gold;
   font-weight: 600;
@@ -129,7 +129,7 @@ html {
   transition: all 0.3s ease;
 }
 
-.travel-btn:hover {
+.home-page .travel-btn:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.8),
@@ -137,7 +137,169 @@ html {
   background: linear-gradient(145deg, #111, #000);
 }
 
-.travel-btn:active {
+.home-page .travel-btn:active {
   transform: translateY(2px) scale(0.98);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+}
+/* ProductGrid.css */
+
+.home-page .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.home-page .box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.home-page .box:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.home-page .box img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover; /* better for photos */
+  border-radius: 8px;
+}
+
+/* --- Extra travel content --- */
+.home-page .home-section {
+  width: 100%;
+  padding: 70px 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.home-page .home-section-title {
+  text-align: center;
+  font-weight: 800 !important;
+  margin-bottom: 28px !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+}
+
+.home-page .home-destination-grid {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.home-page .home-destination-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-page .home-destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.home-page .home-destination-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.home-page .home-destination-meta {
+  padding: 14px 14px 16px;
+}
+
+.home-page .home-destination-name {
+  color: #fff !important;
+  font-weight: 800 !important;
+  margin-bottom: 6px !important;
+}
+
+.home-page .home-destination-location {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.home-page .home-tips-grid {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.home-page .home-tip-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 242, 255, 0.18);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  text-align: left;
+}
+
+.home-page .home-tip-icon {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.home-page .home-tip-title {
+  color: #fff !important;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}
+
+.home-page .home-tip-desc {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.home-page .home-stories-grid {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.home-page .home-story-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.home-page .home-story-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.home-page .home-story-name {
+  margin-top: 12px !important;
+  color: gold !important;
+  font-weight: 800 !important;
+}
+
+.home-page .home-story-quote {
+  margin-top: 8px !important;
+  padding: 0 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+.home-page .home-story-cta {
+  text-align: center;
+  margin-top: 26px;
 }
