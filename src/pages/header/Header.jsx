@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { AppBar, Toolbar, Typography, Box, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import profileImg from "../../assets/img/13-removebg-preview.svg";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const cardRef = useRef();
+
+  // 👇 close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cardRef.current && !cardRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <AppBar position="fixed" className="fixed-header" elevation={0}>
@@ -17,19 +34,71 @@ const Header = () => {
             justifyContent: "space-between",
           }}
         >
-          <Typography className="site-title" onClick={() => navigate("/home")}>
-            MySite
-          </Typography>
+          {/* LEFT SIDE (Logo + Title) */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/home")}
+          >
+            <img
+              src={profileImg}
+              alt="Abi"
+              style={{
+                width: "80px",
+                height: "80px",
+                objectFit: "cover",
+              }}
+            />
 
+            <Typography className="site-title">
+              Halfway manpower consultant
+            </Typography>
+          </Box>
+
+          {/* RIGHT SIDE NAV */}
           <Box className="nav-links">
             <span className="nav-link" onClick={() => navigate("/home")}>
               Home
             </span>
-            <span className="nav-link" onClick={() => navigate("/blogs")}>
-              Blogs
+
+            <span className="nav-link" onClick={() => setOpen((prev) => !prev)}>
+              Services
             </span>
+
+            {open && (
+              <div className="service-card" ref={cardRef}>
+                <div
+                  className="service-item"
+                  onClick={() => {
+                    navigate("/blogs");
+                    setOpen(false);
+                  }}
+                >
+                  Blogs
+                </div>
+                <div
+                  className="service-item"
+                  onClick={() => {
+                    // window.location.href = "/services";
+                    navigate("/services");
+                    setOpen(false);
+                  }}
+                >
+                  App Development
+                </div>
+              </div>
+            )}
+
             <span className="nav-link" onClick={() => navigate("/contact")}>
               Contact
+            </span>
+
+            <span className="nav-link" onClick={() => navigate("/about")}>
+              About
             </span>
           </Box>
         </Container>

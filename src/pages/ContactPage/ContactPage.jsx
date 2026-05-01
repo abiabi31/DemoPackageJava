@@ -1,212 +1,260 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import emailjs from "@emailjs/browser";
-import img1 from "../../assets/img/images.jpeg";
-import img2 from "../../assets/img/4.jpeg";
-import img4 from "../../assets/img/5.jpeg";
-import img5 from "../../assets/img/6.jpeg";
-import img6 from "../../assets/img/7.jpeg";
-import { Box } from "@mui/material";
-import HTMLFlipBook from "react-pageflip";
+import { Link } from "react-router-dom";
+
+import heroImg from "../../assets/img/5.jpeg";
+import img1 from "../../assets/img/a.jpeg";
+import img2 from "../../assets/img/b.jpeg";
+import img3 from "../../assets/img/c.jpeg";
+import img4 from "../../assets/img/d.jpeg";
+import img5 from "../../assets/img/see.jpg";
+import img6 from "../../assets/img/4.jpeg";
+import img from "../../assets/img/dark.avif";
+import ContactForm from "../../utils/ContactForm";
 
 const ContactPage = () => {
   const TO_EMAIL = "asabi030110@gmail.com";
-  const bookRef = useRef(null);
 
   const [form, setForm] = useState({
     name: "",
-    phone: "",
-    place: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const isValidPhone = (value) => {
-    const digits = value.replace(/\D/g, "");
-    return digits.length >= 7;
+  const faqList = [
+    {
+      title: "Can I book a custom trip?",
+      text: "Yes, you can send your preferred destination, date, and budget through the form below.",
+    },
+    {
+      title: "Do you have social media?",
+      text: "Yes, we are active on Instagram, Facebook, and YouTube for travel updates and stories.",
+    },
+    {
+      title: "How fast do you reply?",
+      text: "We usually reply as soon as possible. Sometimes it may take a little longer during travel days.",
+    },
+    {
+      title: "Can I ask for destination advice?",
+      text: "Yes, you can ask for travel suggestions, best places, hotel ideas, and trip planning help.",
+    },
+    {
+      title: "Do you cover group tours?",
+      text: "Yes, group tour and family trip enquiries are welcome through the contact form.",
+    },
+    {
+      title: "Can I collaborate with you?",
+      text: "Yes, for promotions, partnerships, and travel collaborations, please send a message below.",
+    },
+  ];
+
+  const galleryImages = [img1, img2, img3, img4, img5, img6];
+
+  const isValidEmail = (value) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  };
+
+  const handleChange = (field, value) => {
+    setForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus("");
 
-    const { name, phone, place, mail } = form;
+    const { name, email, subject, message } = form;
 
-    if (!name || !phone || !place) {
+    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
       setStatus("Please fill all fields.");
       return;
     }
 
-    if (!isValidPhone(phone)) {
-      setStatus("Enter valid phone number.");
+    if (!isValidEmail(email)) {
+      setStatus("Enter a valid email address.");
       return;
     }
 
+    setLoading(true);
     setStatus("Sending...");
 
     emailjs
       .send(
-        "service_abi123", // 🔴 Replace with your Service ID
-        "template_sn5qc6n", // 🔴 Replace with your Template ID
+        "service_abi123",
+        "template_sn5qc6n",
         {
-          name: name,
-          phone: phone,
-          place: place,
-          mail: TO_EMAIL, // ✅ Send to your mail
+          name,
+          email,
+          subject,
+          message,
+          mail: TO_EMAIL,
         },
-        "NaCmRdXc4zbXTWQxF", // 🔴 Replace with your Public Key
+        "NaCmRdXc4zbXTWQxF",
       )
-      .then(
-        () => {
-          setStatus("Message sent successfully ✅");
-          setForm({ name: "", phone: "", place: "" });
-        },
-        () => {
-          setStatus("Failed to send ❌");
-        },
-      );
+      .then(() => {
+        setStatus("Message sent successfully ✅");
+        setForm({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      })
+      .catch(() => {
+        setStatus("Failed to send ❌");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  const pages1 = [
-    {
-      image: img4,
-      title: "Welcome Aboard",
-      content: "Get ready to explore the world beyond horizons ✈️",
-    },
-    {
-      title: "Destination 1",
-      content: "Every journey begins with a single step into the unknown.",
-      image: img1,
-    },
-    {
-      title: "Mountain Escape",
-      content: "Feel the fresh air and discover peace in the mountains.",
-      image: img2,
-    },
-    {
-      title: "Ocean Dreams",
-      content: "Let the waves wash away your worries and inspire your soul.",
-      image: img6,
-    },
-    {
-      title: "Next Adventure",
-      content: "The world is waiting — where will you travel next?",
-      image: img5,
-    },
-  ];
-  // 🔥 Loop Back Function
-  const handleFlip = (e) => {
-    const currentPage = e.data;
-    const totalPages = pages1.length;
-
-    if (currentPage === totalPages - 1) {
-      setTimeout(() => {
-        bookRef.current.pageFlip().flip(0); // Back to first page
-      }, 600);
-    }
-  };
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!bookRef.current) return;
-
-      const pageFlip = bookRef.current.pageFlip();
-      const currentPage = pageFlip.getCurrentPageIndex();
-      const totalPages = pages1.length;
-
-      if (currentPage < totalPages - 1) {
-        pageFlip.flipNext();
-      } else {
-        pageFlip.flip(0);
-      }
-    }, 5000); // 🔥 3 seconds
-
-    return () => clearInterval(interval);
-  }, []);
   return (
-    <>
-      <div className="contact-layout">
-        <div className="contact-page">
-          <section className="contact-form-section">
-            <div className="contact-form-wrapper">
-              <h2 className="section-title">Send Us a Message</h2>
+    <div className="travel-contact-page">
+      <section className="contact-hero-banner">
+        <img src={img} alt="Contact hero" className="contact-hero-image" />
 
-              <form className="contact-form" onSubmit={handleSubmit}>
-                <label className="field">
-                  <span>Name</span>
-                  <input
-                    type="text"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Your name"
-                  />
-                </label>
+        <div className="contact-hero-overlay">
+          <p className="hero-top-text">Let’s Connect</p>
+          <h1>CONTACT</h1>
+          <p className="hero-description">
+            Every message starts a new conversation, a new idea, and sometimes a
+            new journey.
+          </p>
 
-                <label className="field">
-                  <span>Phone</span>
-                  <input
-                    type="tel"
-                    value={form.phone}
-                    onChange={(e) =>
-                      setForm({ ...form, phone: e.target.value })
-                    }
-                    placeholder="+91 9876543210"
-                  />
-                </label>
-
-                <label className="field">
-                  <span>Place</span>
-                  <input
-                    type="text"
-                    value={form.place}
-                    onChange={(e) =>
-                      setForm({ ...form, place: e.target.value })
-                    }
-                    placeholder="Travel place"
-                  />
-                </label>
-
-                <button type="submit">Submit</button>
-                {status && <p>{status}</p>}
-              </form>
-            </div>
-          </section>
+          <div className="hero-buttons">
+            <a href="#contact-form" className="hero-btn primary-btn">
+              Contact Now
+            </a>
+            <Link to="/about" className="hero-btn secondary-btn">
+              About Me
+            </Link>
+          </div>
         </div>
 
-        {/* <div className="book-right">
-          <Box>
-            <HTMLFlipBook
-              width={400}
-              height={600}
-              size="stretch"
-              minWidth={300}
-              maxWidth={600}
-              minHeight={400}
-              maxHeight={700}
-              maxShadowOpacity={0.7}
-              showCover={true}
-              mobileScrollSupport={true}
-              className="book"
-              ref={bookRef}
-              onFlip={handleFlip}
-            >
-              {pages1.map((page, index) => (
-                <Box key={index} className="page black-gold-page">
-                  {page.image && (
-                    <img
-                      src={page.image}
-                      alt={page.title || "Book Page"}
-                      className="page-img"
-                    />
-                  )}
-                  {page.title && <h2>{page.title}</h2>}
-                  {page.content && <p>{page.content}</p>}
-                </Box>
-              ))}
-            </HTMLFlipBook>
-          </Box>
-        </div> */}
-      </div>
-    </>
+        {/* <div className="hero-wave" /> */}
+      </section>
+
+      <section className="contact-intro-section" id="contact-form">
+        <p className="mini-heading">GET IN TOUCH</p>
+
+        <div className="title-row">
+          <span className="line" />
+          <h2>Contact Form</h2>
+          <span className="line" />
+        </div>
+
+        <p className="intro-text">I would love to hear from you.</p>
+
+        <p className="intro-text muted">
+          Whether you have a question, a project idea, a collaboration request,
+          or just want to say hello, feel free to send a message through the
+          form below.
+        </p>
+
+        <p className="intro-text muted">
+          Want to know more about me before reaching out?
+          <Link to="/about" className="about-inline-link">
+            {" "}
+            Visit the About Page
+          </Link>
+        </p>
+      </section>
+      {/* <section className="contact-form-section-v2">
+        <div className="contact-form-card-v2">
+          <form className="contact-form-v2" onSubmit={handleSubmit}>
+            <div className="form-group-v2">
+              <label>Your name</label>
+              <input
+                type="text"
+                value={form.name}
+                onChange={(e) => handleChange("name", e.target.value)}
+              />
+            </div>
+
+            <div className="form-group-v2">
+              <label>Your email</label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={(e) => handleChange("email", e.target.value)}
+              />
+            </div>
+
+            <div className="form-group-v2">
+              <label>Subject</label>
+              <input
+                type="text"
+                value={form.subject}
+                onChange={(e) => handleChange("subject", e.target.value)}
+              />
+            </div>
+
+            <div className="form-group-v2">
+              <label>Your message</label>
+              <textarea
+                rows="6"
+                value={form.message}
+                onChange={(e) => handleChange("message", e.target.value)}
+              />
+            </div>
+
+            <button type="submit" className="submit-btn-v2" disabled={loading}>
+              {loading ? "SENDING..." : "SUBMIT"}
+            </button>
+
+            {status && (
+              <p
+                className={`status-v2 ${
+                  status.includes("success")
+                    ? "success"
+                    : status.includes("Failed")
+                      ? "error"
+                      : "info"
+                }`}
+              >
+                {status}
+              </p>
+            )}
+          </form>
+        </div>
+      </section> */}
+      <ContactForm />
+      <section className="faq-section-v2">
+        <p className="mini-heading">FREQUENTLY ASKED QUESTIONS</p>
+        <div className="title-row faq-title-row">
+          <h2>FAQs</h2>
+          <span className="line" />
+        </div>
+
+        <div className="faq-grid-v2">
+          {faqList.map((item, index) => (
+            <div className="faq-card-v2" key={index}>
+              <div className="faq-icon-v2">✈</div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="gallery-strip-section">
+        <div className="gallery-strip-title">INSTAGRAM</div>
+        <div className="gallery-strip">
+          {galleryImages.map((image, index) => (
+            <div className="gallery-item" key={index}>
+              <img src={image} alt={`Travel ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 

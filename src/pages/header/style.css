@@ -106,3 +106,47 @@
 .nav-links .nav-link:hover::after {
   width: 100%;
 }
+.service-card {
+  position: absolute;
+  top: 55px;
+  right: 10px;
+  width: 190px;
+  padding: 12px;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+  animation: flyIn 0.4s ease;
+}
+
+/* ✈️ items */
+.service-item {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* hover like boarding highlight */
+.service-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(6px);
+}
+
+/* ✈️ animation (flying effect) */
+@keyframes flyIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px) translateY(-20px) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+}

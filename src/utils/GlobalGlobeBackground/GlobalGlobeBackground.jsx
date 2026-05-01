@@ -90,7 +90,10 @@ export default function GlobalGlobeBackground() {
 
     // Choose a render size based on the actual CSS size.
     const rect = canvas.getBoundingClientRect();
-    const cssSize = Math.max(240, Math.floor(Math.min(rect.width, rect.height) || 420));
+    const cssSize = Math.max(
+      240,
+      Math.floor(Math.min(rect.width, rect.height) || 420),
+    );
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     const renderSize = Math.floor(cssSize * dpr);
     canvas.width = renderSize;
@@ -210,7 +213,10 @@ export default function GlobalGlobeBackground() {
           const v = lat / Math.PI + 0.5;
 
           const tx = Math.floor(u * (texW - 1));
-          const ty = Math.max(0, Math.min(texH - 1, Math.floor(v * (texH - 1))));
+          const ty = Math.max(
+            0,
+            Math.min(texH - 1, Math.floor(v * (texH - 1))),
+          );
           const landMask = landTex[ty * texW + tx];
 
           const lambert = Math.max(
@@ -318,4 +324,3 @@ export default function GlobalGlobeBackground() {
     </div>
   );
 }
-

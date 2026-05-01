@@ -1,124 +1,118 @@
-.book-container {
-  position: relative; /* for background layering */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  padding: 0 50px;
+.video-section {
+  position: relative;
   height: 100vh;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-/* Full container background video */
 .container-bg-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* cover entire container */
-  z-index: -2; /* behind everything */
-  filter: brightness(0.6); /* optional: darken for contrast */
+  object-fit: cover;
+  z-index: -1;
 }
 
 .glass-card {
-  /* scroll-snap-align: start; */
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px); */
-  /* -webkit-backdrop-filter: blur(10px); */
-  border-radius: 20px;
-  margin: 20px auto;
-  width: 80%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  max-width: 700px;
+  padding: 30px;
   text-align: center;
-  padding: 20px;
+  /* border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25); */
+  position: relative;
+  z-index: 1;
 }
 
 .title1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.subtitle1 {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.btn {
-  padding: 10px 25px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.black-gold-page {
-  background-color: #111; /* Dark black background */
-  color: gold; /* Golden text */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.black-gold-page img.page-img {
-  width: 90%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border: 2px solid gold;
-}
-
-.black-gold-page h2 {
-  font-family: "Georgia", serif;
-  font-weight: bold;
+  font-size: 42px;
   margin-bottom: 10px;
 }
 
-.black-gold-page p {
-  font-family: "Times New Roman", serif;
+.subtitle1 {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.cards-section {
+  padding: 60px 20px;
+  /* background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  ); */
+  position: relative;
+  z-index: 3;
+}
+
+.destination-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.destination-card {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-8px);
+}
+
+.destination-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.destination-content {
+  padding: 18px;
+  color: #fff;
+}
+
+.destination-content h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.destination-content p {
+  margin: 0 0 8px;
   font-size: 16px;
-  line-height: 1.5;
+}
+
+.destination-content span {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.explore-btn {
+  width: 100%;
+  border-radius: 12px !important;
 }
 
 .plane {
-  position: absolute;
-  font-size: 32px;
-
-  /* ⏳ SLOW movement */
-  animation: flyStraight 15s linear infinite;
-}
-
-/* 🔥 Straight line: Left Bottom ➜ Right Top */
-@keyframes flyStraight {
-  0% {
-    left: -40px;
-    top: calc(100vh - 40px);
-    opacity: 0;
-  }
-
-  5% {
-    opacity: 1;
-  }
-
-  100% {
-    left: calc(100vw - 40px);
-    top: -40px;
-    opacity: 1;
-  }
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 10;
 }

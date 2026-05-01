@@ -1,8 +1,11 @@
 import React from "react";
-import { Box, Typography, Container } from "@mui/material";
+import { Box, Typography, Container, Tooltip } from "@mui/material";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <Box className="footer-container">
       <Container maxWidth="lg" className="footer-content">
@@ -56,6 +59,14 @@ const Footer = () => {
             <span className="social-icon">💼</span>
             <span className="social-icon">📧</span>
           </Box>
+          <Tooltip title="Admin Login" arrow placement="bottom">
+            <Typography
+              className="admin-login"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </Typography>
+          </Tooltip>
         </Box>
       </Container>
 

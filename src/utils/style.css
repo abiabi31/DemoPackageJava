@@ -1,0 +1,117 @@
+.contact-form-section-v2 {
+  padding: 20px 20px 70px;
+}
+
+.contact-form-card-v2 {
+  max-width: 650px;
+  margin: 0 auto;
+  /* background: rgba(255, 255, 255, 0.08); */
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.22),
+    0 0 30px rgba(0, 207, 255, 0.08);
+  padding: 34px 26px;
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+}
+
+.contact-form-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.form-group-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group-v2 label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b7d8ff;
+  text-align: center;
+}
+
+.form-group-v2 input,
+.form-group-v2 textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 14px 16px;
+  font-size: 15px;
+  outline: none;
+  color: #ffffff;
+  border-radius: 12px;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.form-group-v2 input::placeholder,
+.form-group-v2 textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.form-group-v2 input:focus,
+.form-group-v2 textarea:focus {
+  border-color: #00cfff;
+  box-shadow: 0 0 0 3px rgba(0, 207, 255, 0.14);
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-group-v2 textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.submit-btn-v2 {
+  align-self: center;
+  min-width: 130px;
+  padding: 14px 28px;
+  border: none;
+  background: linear-gradient(135deg, #00cfff, #0077ff);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  border-radius: 999px;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(0, 119, 255, 0.28);
+}
+
+.submit-btn-v2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 119, 255, 0.34);
+}
+
+.submit-btn-v2:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.status-v2 {
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-v2.success {
+  color: #5df3a4;
+}
+
+.status-v2.error {
+  color: #ff8f8f;
+}
+
+.status-v2.info {
+  color: #7fe3ff;
+}
