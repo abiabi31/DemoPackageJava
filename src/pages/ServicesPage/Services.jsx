@@ -15,7 +15,11 @@ import img from "../../assets/img/dark.avif";
 import MailPopup from "../../utils/mail/MailPopup";
 import { useState } from "react";
 import flySound from "../../assets/img/fly.mp3";
-
+import img1 from "../../assets/img/3.jpeg";
+import img2 from "../../assets/img/1.jpeg";
+import img3 from "../../assets/img/3.jpeg";
+import img4 from "../../assets/img/7.jpeg";
+import img5 from "../../assets/img/images.jpeg";
 const data = [
   {
     id: 1,
@@ -34,6 +38,26 @@ const data = [
     mandatory: "import",
     quantity: 10,
     salary: "1000-7000 ARD",
+  },
+];
+const data1 = [
+  {
+    id: 1,
+    category: "MAFUTY INGINKO",
+    qualification: "RCH/DIP+NEBO",
+    // gender: "FEMALE",
+    // mandatory: "PROMETRIC",
+    quantity: 10,
+    salary: "	7000 - 8000 AED",
+  },
+  {
+    id: 2,
+    category: "SAFETY OFFICERS",
+    qualification: "IP SAFETY/NERONIE",
+    // gender: "FEMALE",
+    // mandatory: "import",
+    quantity: 10,
+    salary: "	1000-7000 ARD",
   },
 ];
 
@@ -61,79 +85,80 @@ const Services = () => {
       console.log("Play error:", err);
     });
   };
+  const clouds = Array.from({ length: 10 });
+
   return (
     <>
-      <section className="contact-hero-banner">
-        <img src={img} alt="Contact hero" className="contact-hero-image" />
+      <Box className="page-wrapper">
+        <section className="contact-hero-banner">
+          <img src={img} alt="Contact hero" className="contact-hero-image" />
 
-        <div className="contact-hero-overlay">
-          <h1>
-            {" "}
+          <div className="contact-hero-overlay">
             <h1>Our Services</h1>
-          </h1>
-        </div>
-
-        {/* <div className="hero-wave" /> */}
-      </section>{" "}
-      <Box
-        sx={{
-          minHeight: "100vh",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* 🌌 SKY BACKGROUND */}
-        <Box className="sky">
-          <div className="cloud cloud1">☁️</div>
-          <div className="cloud cloud2">☁️</div>
-          <div className="cloud cloud3">☁️</div>
-          {/* <div className="plane">✈️</div> */}
-          <div className="plane" onClick={handlePlaneClick}>
-            ✈️
           </div>
-          <audio ref={audioRef} preload="auto">
-            <source src={flySound} type="audio/mpeg" />
-          </audio>
+        </section>
+        <Box className="gallery-container">
+          <Box className="gallery-card">
+            <img src={img1} alt="img1" />
+          </Box>
+
+          <Box className="gallery-card">
+            <img src={img2} alt="img2" />
+          </Box>
+
+          <Box className="gallery-card">
+            <img src={img3} alt="img3" />
+          </Box>
+
+          <Box className="gallery-card">
+            <img src={img4} alt="img4" />
+          </Box>
         </Box>
 
-        {/* ✨ TITLE (ONLY ONE TIME - FIXED) */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "5%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            textAlign: "center",
-            zIndex: 10,
-          }}
-        >
-          <Typography className="main-title">Services</Typography>
-          <Box className="title-underline" />
-          <Typography className="sub-title">Our Services</Typography>
-        </Box>
+        {/* SKY PAGE */}
+        <Box className="sky-page">
+          {/* 🌌 SKY BACKGROUND */}
+          <Box className="sky-bg">
+            {clouds.map((_, i) => (
+              <div
+                key={i}
+                className={`cloud cloud${(i % 5) + 1}`}
+                style={{
+                  top: `${10 + i * 8}%`,
+                  animationDelay: `${i * 2}s`,
+                }}
+              >
+                ☁️
+              </div>
+            ))}
 
-        {/* 🏢 CARD SECTION */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "25%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "80%",
-            maxWidth: "600px",
-            zIndex: 10,
-            mt: 30,
-          }}
-        >
-          <Box className="airport-card">
-            <Typography
-              variant="h4"
-              sx={{ textAlign: "center", color: "gold", mb: 2 }}
-            >
-              ✈️ Hotel
-            </Typography>
+            <div className="plane" onClick={handlePlaneClick}>
+              ✈️
+            </div>
 
-            <Box sx={{ display: "grid", rowGap: "10px" }}>
+            <audio ref={audioRef} preload="auto">
+              <source src={flySound} type="audio/mpeg" />
+            </audio>
+          </Box>
+
+          {/* CONTENT */}
+          <Box className="content-layer">
+            {/* TITLE */}
+            <Box className="title-box">
+              <Typography className="main-title">Services</Typography>
+              <Box className="title-underline" />
+              <Typography className="sub-title">Our Services</Typography>
+            </Box>
+
+            {/* CARD 1 */}
+            <Box className="airport-card">
+              <Typography
+                variant="h4"
+                sx={{ textAlign: "center", color: "gold" }}
+              >
+                ✈️ Hotel
+              </Typography>
+
               <Typography>
                 <b>Category:</b> CATEGORY
               </Typography>
@@ -144,20 +169,13 @@ const Services = () => {
                 <b>Gender:</b> GENDER
               </Typography>
               <Typography>
-                <b>Mandatory:</b> MANDATORY
-              </Typography>
-              <Typography>
-                <b>Quantity:</b> QUANTITY
-              </Typography>
-              <Typography>
                 <b>Salary:</b> SALARY
               </Typography>
             </Box>
-          </Box>
-        </Box>
-        <Box>
-          <Box className="airport-card1">
+
+            {/* TABLE 1 */}
             <Paper className="table-container">
+              <Typography>Hotel</Typography>
               <Table>
                 <TableHead>
                   <TableRow className="table-header">
@@ -203,15 +221,111 @@ const Services = () => {
                 </TableBody>
               </Table>
             </Paper>
+
+            {/* TABLE 2 */}
+            <Paper className="table-container">
+              <Typography>WANTED FOR NURSE - KUWAIT</Typography>
+              <Table>
+                <TableHead>
+                  <TableRow className="table-header">
+                    <TableCell>S.No</TableCell>
+                    <TableCell>CATEGORY</TableCell>
+                    <TableCell>QUALIFICATION</TableCell>
+                    <TableCell>GENDER</TableCell>
+                    <TableCell>MANDATORY</TableCell>
+                    <TableCell>QUANTITY</TableCell>
+                    <TableCell>SALARY</TableCell>
+                    <TableCell>MoreInfo</TableCell>
+                  </TableRow>
+                </TableHead>
+
+                <TableBody>
+                  {data.map((row) => (
+                    <TableRow key={row.id} className="table-row">
+                      <TableCell>{row.id}</TableCell>
+                      <TableCell>{row.category}</TableCell>
+                      <TableCell>{row.qualification}</TableCell>
+                      <TableCell>{row.gender}</TableCell>
+                      <TableCell>{row.mandatory}</TableCell>
+                      <TableCell>{row.quantity}</TableCell>
+                      <TableCell>{row.salary}</TableCell>
+                      <TableCell>
+                        <Link
+                          // href="#"
+                          onClick={() => handleOpen(row)}
+                          className="apply-link"
+                        >
+                          Apply
+                        </Link>{" "}
+                        <Link
+                          // href="#"
+                          onClick={() => handleOpen(row)}
+                          className="new-link"
+                        >
+                          New
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Paper>
+
+            {/* TABLE 3 */}
+            <Paper className="table-container">
+              <Table>
+                <TableHead>
+                  <TableRow className="table-header">
+                    <TableCell>S.No</TableCell>
+                    <TableCell>CATEGORY</TableCell>
+                    <TableCell>QUALIFICATION</TableCell>
+
+                    <TableCell>QUANTITY</TableCell>
+                    <TableCell>SALARY</TableCell>
+                    <TableCell>MoreInfo</TableCell>
+                  </TableRow>
+                </TableHead>
+
+                <TableBody>
+                  {data1.map((row) => (
+                    <TableRow key={row.id} className="table-row">
+                      <TableCell>{row.id}</TableCell>
+                      <TableCell>{row.category}</TableCell>
+                      <TableCell>{row.qualification}</TableCell>
+
+                      <TableCell>{row.quantity}</TableCell>
+                      <TableCell>{row.salary}</TableCell>
+                      <TableCell>
+                        <Link
+                          // href="#"
+                          onClick={() => handleOpen(row)}
+                          className="apply-link"
+                        >
+                          Apply
+                        </Link>{" "}
+                        <Link
+                          // href="#"
+                          onClick={() => handleOpen(row)}
+                          className="new-link"
+                        >
+                          New
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Paper>
           </Box>
         </Box>
+
+        <MailPopup
+          open={open}
+          selectedRow={selectedRow}
+          setOpen={setOpen}
+          setSelectedRow={setSelectedRow}
+        />
       </Box>
-      <MailPopup
-        open={open}
-        selectedRow={selectedRow}
-        setOpen={setOpen}
-        setSelectedRow={setSelectedRow}
-      />
     </>
   );
 };

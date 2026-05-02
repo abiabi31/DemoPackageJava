@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Link,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -14,18 +8,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-const data = [
-  {
-    id: 1,
-    category: "NURSERS",
-    qualification: "BSC NURSERS",
-    gender: "FEMALE",
-    mandatory: "PROMETRIC",
-    quantity: 10,
-    salary: "30000",
-  },
-];
+import emailjs from "@emailjs/browser";
 
 export default function MailPopup({
   open,
@@ -38,45 +21,145 @@ export default function MailPopup({
     setSelectedRow(null);
   };
 
+  // ✅ Form state
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // ✅ Handle input change
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  // ✅ Send Email
+  // const sendEmail = () => {
+  //   const templateParams = {
+  //     from_name: form.name, // ✅ IMPORTANT
+  //     email: form.email, // ✅ IMPORTANT
+  //     phone: form.phone, // ✅ IMPORTANT
+  //     message: form.message, // ✅ IMPORTANT
+  //   };
+  //   console.log("📤 Sending email with params:", templateParams); // ✅ Debug log
+  //   emailjs
+  //     .send(
+  //       "service_jnhihzk", // your Service ID
+  //       "template_sn5qc6n", // your Template ID
+  //       templateParams,
+  //       "NaCmRdXc4zbXTWQxF", // your Public Key
+  //     )
+  //     .then(() => {
+  //       alert("✅ Message sent successfully!");
+  //       setForm({
+  //         name: "",
+  //         email: "",
+  //         phone: "",
+  //         message: "",
+  //       });
+  //       handleClose();
+  //     })
+  //     .catch((error) => {
+  //       console.log("❌ ERROR:", error);
+  //       alert("❌ Failed to send message");
+  //     });
+  // };
+  const sendEmail = () => {
+    var messageBody = `
+  Name: ${form.name} 
+  Email: ${form.email} 
+  Phone: ${form.phone} 
+  Message: ${form.message}
+`;
+
+    const templateParams = {
+      subject: "For Job vacancy info",
+      from_name: form.name,
+      message: messageBody,
+    };
+    console.log("📤 Sending email with params:", templateParams); // ✅ Debug log
+    emailjs
+      .send(
+        "service_sq1t6fc", // your Service ID
+        "template_xm3j9jq", // your Template ID
+        templateParams,
+        "kZ526cYx2CWvju_O3", // your Public Key
+      )
+      .then(() => {
+        alert("✅ Message sent successfully!");
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        handleClose();
+      })
+      .catch((error) => {
+        console.log("❌ ERROR:", error);
+        alert("❌ Failed to send message");
+      });
+  };
   return (
-    <>
-      {/* POPUP / DIALOG */}
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle>
-          Send us a message
-          {/* <IconButton onClick={handleClose} sx={{ ml: 2 }}>
-            <CloseIcon />
-          </IconButton> */}
-        </DialogTitle>
+    <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+      <DialogTitle>Send us a message</DialogTitle>
 
-        <DialogContent>
-          {selectedRow && (
-            <Box sx={{ mt: 1 }}>
-              <Typography variant="subtitle1" sx={{ mb: 2 }}>
-                Details of {selectedRow.category}
-              </Typography>
+      <DialogContent>
+        {selectedRow && (
+          <Box sx={{ mt: 1 }}>
+            <Typography sx={{ mb: 2 }}>
+              Details of {selectedRow.category}
+            </Typography>
 
-              <TextField fullWidth margin="dense" label="Your Name" />
-              <TextField fullWidth margin="dense" label="Your Email" />
-              <TextField fullWidth margin="dense" label="Phone" />
-              <TextField
-                fullWidth
-                margin="dense"
-                label="Message"
-                multiline
-                rows={4}
-              />
+            <TextField
+              fullWidth
+              margin="dense"
+              label="Your Name"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+            />
 
-              <Box sx={{ mt: 2, textAlign: "right" }}>
-                <Button onClick={handleClose} sx={{ mr: 1 }}>
-                  Cancel
-                </Button>
-                <Button variant="contained">Send Message</Button>
-              </Box>
+            <TextField
+              fullWidth
+              margin="dense"
+              label="Your Email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+            />
+
+            <TextField
+              fullWidth
+              margin="dense"
+              label="Phone"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+            />
+
+            <TextField
+              fullWidth
+              margin="dense"
+              label="Message"
+              name="message"
+              multiline
+              rows={4}
+              value={form.message}
+              onChange={handleChange}
+            />
+
+            <Box sx={{ mt: 2, textAlign: "right" }}>
+              <Button onClick={handleClose}>Cancel</Button>
+
+              <Button variant="contained" onClick={sendEmail}>
+                Send Message
+              </Button>
             </Box>
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
+          </Box>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 }

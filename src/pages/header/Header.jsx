@@ -88,7 +88,7 @@ const Header = () => {
                     setOpen(false);
                   }}
                 >
-                  App Development
+                  Our Offerings{" "}
                 </div>
               </div>
             )}
