@@ -1,11 +1,9 @@
 import React from "react";
 import "./style.css";
-
 import profileImg from "../../assets/img/5.jpeg";
 import travel1 from "../../assets/img/images.jpeg";
 import travel2 from "../../assets/img/4.jpeg";
 import travel3 from "../../assets/img/6.jpeg";
-
 const AboutPage = () => {
   const skills = [
     "Travel Planning",
