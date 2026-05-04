@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./LoadingScreen.css";
+import logo from "../../assets/img/newlogo.png";
 
 function LoadingScreen() {
   const [isVisible, setIsVisible] = useState(true);
@@ -8,7 +9,7 @@ function LoadingScreen() {
     // Show loading screen for 3 seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -22,7 +23,7 @@ function LoadingScreen() {
 
       {/* Glowing effect */}
       <div className="glow-effect"></div>
-
+      <img src={logo} className="center-logo" />
       {/* Loading container */}
       <div className="loading-container">
         {/* 3D Rotating Globe */}

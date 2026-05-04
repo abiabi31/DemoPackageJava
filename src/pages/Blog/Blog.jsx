@@ -100,6 +100,55 @@ function Blog() {
 
       {/* Cards Section */}
       <Box className="cards-section">
+        <Box className="blog-content">
+          <h2>Discover Meaningful Travel Experiences</h2>
+
+          <p>
+            Travel is not just about visiting new places — it is about
+            experiencing the world in a way that stays with you long after the
+            journey ends. Each destination offers a unique blend of culture,
+            landscape, and stories waiting to be explored.
+          </p>
+
+          <p>
+            At our core, we focus on delivering thoughtfully curated travel
+            experiences that go beyond the ordinary. From iconic landmarks to
+            lesser-known destinations, we bring you closer to places that truly
+            matter. Our goal is to help you travel smarter, deeper, and more
+            meaningfully.
+          </p>
+
+          <p>
+            Whether you are seeking relaxation, adventure, or cultural
+            immersion, our insights are designed to guide you at every step. We
+            provide practical travel advice, destination highlights, and
+            real-world tips to ensure a seamless and enjoyable experience.
+          </p>
+
+          <p>
+            We understand that every traveler is different. That’s why our
+            content is crafted to suit a wide range of travel styles — from solo
+            explorers to families and business travelers. Every journey deserves
+            careful planning and the right inspiration.
+          </p>
+
+          <p>
+            Through our platform, we aim to simplify travel decisions while
+            enhancing the overall experience. With a focus on reliability,
+            comfort, and authenticity, we help you make the most of every trip.
+          </p>
+
+          <p>
+            Explore new destinations, gain fresh perspectives, and create
+            lasting memories. Your journey begins with the right guidance — and
+            we are here to provide it.
+          </p>
+
+          <p>
+            Start planning today and experience travel the way it was meant to
+            be.
+          </p>
+        </Box>
         <Box className="destination-section">
           {destinations.map((item) => (
             <Box className="destination-card" key={item.id}>

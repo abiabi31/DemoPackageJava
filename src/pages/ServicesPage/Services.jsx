@@ -20,6 +20,8 @@ import img2 from "../../assets/img/1.jpeg";
 import img3 from "../../assets/img/3.jpeg";
 import img4 from "../../assets/img/7.jpeg";
 import img5 from "../../assets/img/images.jpeg";
+import travel from "../../assets/img/business-travel.jpg";
+
 const data = [
   {
     id: 1,
@@ -91,7 +93,7 @@ const Services = () => {
     <>
       <Box className="page-wrapper">
         <section className="contact-hero-banner">
-          <img src={img} alt="Contact hero" className="contact-hero-image" />
+          <img src={travel} alt="Contact hero" className="contact-hero-image" />
 
           <div className="contact-hero-overlay">
             <h1>Our Services</h1>

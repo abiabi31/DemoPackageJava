@@ -573,3 +573,100 @@ body::after {
     grid-template-columns: 1fr;
   }
 }
+/* 🌌 Background wrapper */
+.contact-wrapper {
+  background: #e6e6e6;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 📦 Card */
+.contact-card {
+  background: #f2f2f2;
+  padding: 40px 30px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+/* Each section */
+.contact-item {
+  margin-bottom: 30px;
+}
+
+/* Icons */
+.icon {
+  font-size: 40px;
+  color: #1f3c88;
+  margin-bottom: 10px;
+}
+
+/* Title (Mobile / Email) */
+.title {
+  font-size: 20px;
+  color: #1f3c88;
+  margin: 5px 0;
+}
+
+/* Main text */
+.text {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Sub text */
+.sub-text {
+  font-size: 14px;
+  color: #777;
+  margin: 2px 0;
+}
+.contact-main {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px;
+  margin-left: 20%;
+}
+
+/* LEFT FORM */
+.left-side {
+  flex: 1;
+  max-width: 700px; /* 🔥 increase width */
+  width: 100%;
+}
+
+/* RIGHT CARD */
+.right-side {
+  width: 300px;
+}
+
+/* FORM CARD STYLE */
+.contact-form {
+  width: 100%;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* REMOVE THIS ❌ */
+/* .contact-card {
+  max-width: 320px;
+} */
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contact-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-side {
+    width: 100%;
+    max-width: 400px;
+  }
+}

@@ -65,6 +65,7 @@ export default function MailPopup({
   //       alert("❌ Failed to send message");
   //     });
   // };
+
   const sendEmail = () => {
     var messageBody = `
   Name: ${form.name} 
@@ -81,8 +82,8 @@ export default function MailPopup({
     console.log("📤 Sending email with params:", templateParams); // ✅ Debug log
     emailjs
       .send(
-        "service_sq1t6fc", // your Service ID
-        "template_xm3j9jq", // your Template ID
+        "service_pjjxus6", // your Service ID
+        "template_tql40oq", // your Template ID
         templateParams,
         "kZ526cYx2CWvju_O3", // your Public Key
       )

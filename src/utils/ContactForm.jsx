@@ -7,7 +7,7 @@ const ContactForm = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
   });
 
@@ -26,53 +26,93 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("");
+    e.preventDefault(); // 🚫 STOP page refresh
 
-    const { name, email, subject, message } = form;
+    var messageBody = `
+Name: ${form.name} 
+Email: ${form.email} 
+Phone: ${form.phone} 
+Message: ${form.message}
+`;
 
-    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-      setStatus("Please fill all fields.");
-      return;
-    }
+    const templateParams = {
+      subject: "For Job vacancy info",
+      from_name: form.name,
+      message: messageBody,
+    };
 
-    if (!isValidEmail(email)) {
-      setStatus("Enter a valid email address.");
-      return;
-    }
-
-    setLoading(true);
-    setStatus("Sending...");
+    console.log("📤 Sending email with params:", templateParams);
 
     emailjs
       .send(
-        "service_abi123",
-        "template_sn5qc6n",
-        {
-          name,
-          email,
-          subject,
-          message,
-          mail: TO_EMAIL,
-        },
-        "NaCmRdXc4zbXTWQxF",
+        "service_pjjxus6",
+        "template_tql40oq",
+        templateParams,
+        "kZ526cYx2CWvju_O3",
       )
       .then(() => {
-        setStatus("Message sent successfully ✅");
+        alert("✅ Message sent successfully!");
+
         setForm({
           name: "",
           email: "",
-          subject: "",
+          phone: "",
           message: "",
         });
       })
-      .catch(() => {
-        setStatus("Failed to send ❌");
-      })
-      .finally(() => {
-        setLoading(false);
+      .catch((error) => {
+        console.log("❌ ERROR:", error);
+        alert("❌ Failed to send message");
       });
   };
+  //  const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setStatus("");
+
+  //   const { name, email, phone, message } = form;
+
+  //   if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+  //     setStatus("Please fill all fields.");
+  //     return;
+  //   }
+
+  //   if (!isValidEmail(email)) {
+  //     setStatus("Enter a valid email address.");
+  //     return;
+  //   }
+
+  //   setLoading(true);
+  //   setStatus("Sending...");
+
+  //   emailjs
+  //     .send(
+  //       "service_abi123",
+  //       "template_sn5qc6n",
+  //       {
+  //         name,
+  //         email,
+  //         subject,
+  //         message,
+  //         mail: TO_EMAIL,
+  //       },
+  //       "NaCmRdXc4zbXTWQxF",
+  //     )
+  //     .then(() => {
+  //       setStatus("Message sent successfully ✅");
+  //       setForm({
+  //         name: "",
+  //         email: "",
+  //         subject: "",
+  //         message: "",
+  //       });
+  //     })
+  //     .catch(() => {
+  //       setStatus("Failed to send ❌");
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // };
   return (
     <section className="contact-form-section-v2">
       <div className="contact-form-card-v2">
@@ -96,11 +136,11 @@ const ContactForm = () => {
           </div>
 
           <div className="form-group-v2">
-            <label>Subject</label>
+            <label>Phone</label>
             <input
               type="text"
-              value={form.subject}
-              onChange={(e) => handleChange("subject", e.target.value)}
+              value={form.phone}
+              onChange={(e) => handleChange("phone", e.target.value)}
             />
           </div>
 

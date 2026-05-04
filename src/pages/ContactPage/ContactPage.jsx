@@ -12,14 +12,21 @@ import img5 from "../../assets/img/see.jpg";
 import img6 from "../../assets/img/4.jpeg";
 import img from "../../assets/img/dark.avif";
 import ContactForm from "../../utils/ContactForm";
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
+// import PhoneIcon from "@mui/icons-material/Phone";
+// import EmailIcon from "@mui/icons-material/Email";
+import * as Icons from "@mui/icons-material";
 
+const LocationOnIcon = Icons.LocationOn;
+const PhoneIcon = Icons.Phone;
+const EmailIcon = Icons.Email;
 const ContactPage = () => {
   const TO_EMAIL = "asabi030110@gmail.com";
 
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
   });
 
@@ -66,54 +73,54 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("");
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setStatus("");
 
-    const { name, email, subject, message } = form;
+  //   const { name, email, subject, message } = form;
 
-    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-      setStatus("Please fill all fields.");
-      return;
-    }
+  //   if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+  //     setStatus("Please fill all fields.");
+  //     return;
+  //   }
 
-    if (!isValidEmail(email)) {
-      setStatus("Enter a valid email address.");
-      return;
-    }
+  //   if (!isValidEmail(email)) {
+  //     setStatus("Enter a valid email address.");
+  //     return;
+  //   }
 
-    setLoading(true);
-    setStatus("Sending...");
+  //   setLoading(true);
+  //   setStatus("Sending...");
 
-    emailjs
-      .send(
-        "service_abi123",
-        "template_sn5qc6n",
-        {
-          name,
-          email,
-          subject,
-          message,
-          mail: TO_EMAIL,
-        },
-        "NaCmRdXc4zbXTWQxF",
-      )
-      .then(() => {
-        setStatus("Message sent successfully ✅");
-        setForm({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-      })
-      .catch(() => {
-        setStatus("Failed to send ❌");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  //   emailjs
+  //     .send(
+  //       "service_abi123",
+  //       "template_sn5qc6n",
+  //       {
+  //         name,
+  //         email,
+  //         subject,
+  //         message,
+  //         mail: TO_EMAIL,
+  //       },
+  //       "NaCmRdXc4zbXTWQxF",
+  //     )
+  //     .then(() => {
+  //       setStatus("Message sent successfully ✅");
+  //       setForm({
+  //         name: "",
+  //         email: "",
+  //         subject: "",
+  //         message: "",
+  //       });
+  //     })
+  //     .catch(() => {
+  //       setStatus("Failed to send ❌");
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // };
 
   return (
     <div className="travel-contact-page">
@@ -225,7 +232,35 @@ const ContactPage = () => {
           </form>
         </div>
       </section> */}
-      <ContactForm />
+      <div className="contact-main">
+        {/* LEFT → Form */}
+        <div className="left-side">
+          <ContactForm />
+        </div>
+
+        {/* RIGHT → Contact Card */}
+        <div className="right-side">
+          <div className="contact-card">
+            <div className="contact-item">
+              <LocationOnIcon className="icon" />
+              <p className="text">Karungal</p>
+              <p className="sub-text">Kanniyakumari, India</p>
+            </div>
+
+            <div className="contact-item">
+              <PhoneIcon className="icon" />
+              <h3 className="title">Mobile</h3>
+              <p className="sub-text">+91 9952687642</p>
+            </div>
+
+            <div className="contact-item">
+              <EmailIcon className="icon" />
+              <h3 className="title">Email</h3>
+              <p className="sub-text">halfwayconsultant@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <section className="faq-section-v2">
         <p className="mini-heading">FREQUENTLY ASKED QUESTIONS</p>
         <div className="title-row faq-title-row">

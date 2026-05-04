@@ -7,10 +7,15 @@ import img4 from "../../assets/img/7.jpeg";
 import img5 from "../../assets/img/images.jpeg";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import log from "../../assets/img/1.png";
 
+import post from "../../assets/img/post.png";
+import post1 from "../../assets/img/post1.png";
+import { IoClose } from "react-icons/io5";
+import post2 from "../../assets/img/post2.png";
 function HomePage() {
   const navigate = useNavigate();
-
+  const [selectedImg, setSelectedImg] = useState(null);
   const slides = [
     {
       id: "slide-nature",
@@ -57,32 +62,144 @@ function HomePage() {
   }, [slides.length]);
 
   const destinations = [
-    { id: "dest-1", title: "Alpine Peaks", location: "Switzerland", image: img4, duration: "7 days" },
-    { id: "dest-2", title: "Forest Trails", location: "Canada", image: img1, duration: "5 days" },
-    { id: "dest-3", title: "Coastal Sunrise", location: "Portugal", image: img5, duration: "4 days" },
-    { id: "dest-4", title: "Desert Stars", location: "Morocco", image: img2, duration: "6 days" },
-    { id: "dest-5", title: "Island Hopping", location: "Greece", image: img3, duration: "7 days" },
-    { id: "dest-6", title: "Urban Escape", location: "Japan", image: img4, duration: "3 days" },
-    { id: "dest-7", title: "Lakeside Calm", location: "Norway", image: img1, duration: "5 days" },
-    { id: "dest-8", title: "Countryside Roads", location: "France", image: img2, duration: "6 days" },
-    { id: "dest-9", title: "Amazon Adventures", location: "Brazil", image: img5, duration: "8 days" },
-    { id: "dest-10", title: "Mountain Villages", location: "Nepal", image: img3, duration: "7 days" },
-    { id: "dest-11", title: "Rainforest Reboot", location: "Costa Rica", image: img4, duration: "6 days" },
-    { id: "dest-12", title: "Golden City Walks", location: "India", image: img2, duration: "4 days" },
+    {
+      id: "dest-1",
+      title: "Alpine Peaks",
+      location: "Switzerland",
+      image: post,
+      duration: "7 days",
+    },
+    {
+      id: "dest-2",
+      title: "Forest Trails",
+      location: "Canada",
+      image: post1,
+      duration: "5 days",
+    },
+    {
+      id: "dest-3",
+      title: "Coastal Sunrise",
+      location: "Portugal",
+      image: post2,
+      duration: "4 days",
+    },
+    {
+      id: "dest-4",
+      title: "Desert Stars",
+      location: "Morocco",
+      image: img2,
+      duration: "6 days",
+    },
+    {
+      id: "dest-5",
+      title: "Island Hopping",
+      location: "Greece",
+      image: img3,
+      duration: "7 days",
+    },
+    {
+      id: "dest-6",
+      title: "Urban Escape",
+      location: "Japan",
+      image: img4,
+      duration: "3 days",
+    },
+    {
+      id: "dest-7",
+      title: "Lakeside Calm",
+      location: "Norway",
+      image: img1,
+      duration: "5 days",
+    },
+    {
+      id: "dest-8",
+      title: "Countryside Roads",
+      location: "France",
+      image: img2,
+      duration: "6 days",
+    },
+    {
+      id: "dest-9",
+      title: "Amazon Adventures",
+      location: "Brazil",
+      image: img5,
+      duration: "8 days",
+    },
+    {
+      id: "dest-10",
+      title: "Mountain Villages",
+      location: "Nepal",
+      image: img3,
+      duration: "7 days",
+    },
+    {
+      id: "dest-11",
+      title: "Rainforest Reboot",
+      location: "Costa Rica",
+      image: img4,
+      duration: "6 days",
+    },
+    {
+      id: "dest-12",
+      title: "Golden City Walks",
+      location: "India",
+      image: img2,
+      duration: "4 days",
+    },
   ];
 
   const travelTips = [
-    { step: 1, title: "Pick a vibe", desc: "Choose nature, food, beaches, mountains, or culture." , icon: "🧭" },
-    { step: 2, title: "Plan your days", desc: "Balance must-dos with downtime so it feels effortless.", icon: "🗓️" },
-    { step: 3, title: "Pack smart", desc: "Bring layers, chargers, and comfortable shoes for long walks.", icon: "🎒" },
-    { step: 4, title: "Book ahead", desc: "Secure flights and stays early to get better options and prices.", icon: "✈️" },
+    {
+      step: 1,
+      title: "Pick a vibe",
+      desc: "Choose nature, food, beaches, mountains, or culture.",
+      icon: "🧭",
+    },
+    {
+      step: 2,
+      title: "Plan your days",
+      desc: "Balance must-dos with downtime so it feels effortless.",
+      icon: "🗓️",
+    },
+    {
+      step: 3,
+      title: "Pack smart",
+      desc: "Bring layers, chargers, and comfortable shoes for long walks.",
+      icon: "🎒",
+    },
+    {
+      step: 4,
+      title: "Book ahead",
+      desc: "Secure flights and stays early to get better options and prices.",
+      icon: "✈️",
+    },
   ];
 
   const stories = [
-    { id: "story-1", name: "Ava", quote: "Every trip taught me something new about myself.", image: img5 },
-    { id: "story-2", name: "Noah", quote: "We thought it would be relaxing. It turned into an adventure!", image: img4 },
-    { id: "story-3", name: "Mia", quote: "The best memories are the ones you make on the way.", image: img1 },
-    { id: "story-4", name: "Ethan", quote: "New places, new perspectives, and zero regrets.", image: img2 },
+    {
+      id: "story-1",
+      name: "Ava",
+      quote: "Every trip taught me something new about myself.",
+      image: img5,
+    },
+    {
+      id: "story-2",
+      name: "Noah",
+      quote: "We thought it would be relaxing. It turned into an adventure!",
+      image: img4,
+    },
+    {
+      id: "story-3",
+      name: "Mia",
+      quote: "The best memories are the ones you make on the way.",
+      image: img1,
+    },
+    {
+      id: "story-4",
+      name: "Ethan",
+      quote: "New places, new perspectives, and zero regrets.",
+      image: img2,
+    },
   ];
 
   return (
@@ -130,7 +247,12 @@ function HomePage() {
         <div className="home-destination-grid">
           {destinations.map((d) => (
             <div key={d.id} className="home-destination-card">
-              <img src={d.image} alt={d.title} />
+              <img
+                src={d.image}
+                alt={d.title}
+                className="card-img"
+                onClick={() => setSelectedImg(d.image)} /* 🔥 click */
+              />
               <div className="home-destination-meta">
                 <Typography variant="h6" className="home-destination-name">
                   {d.title}
@@ -143,7 +265,21 @@ function HomePage() {
           ))}
         </div>
       </section>
+      {selectedImg && (
+        <div className="image-modal">
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImg} className="image-modal-content" />
 
+            <button
+              className="modal-close"
+              onClick={() => setSelectedImg(null)}
+            >
+              <IoClose />
+              <span className="tooltip-text">Close</span>
+            </button>
+          </div>
+        </div>
+      )}
       <section className="home-section home-tips">
         <Typography variant="h4" className="home-section-title">
           Travel Planning Made Easy
@@ -174,9 +310,7 @@ function HomePage() {
               <Typography variant="h6" className="home-story-name">
                 {s.name}
               </Typography>
-              <Typography className="home-story-quote">
-                "{s.quote}"
-              </Typography>
+              <Typography className="home-story-quote">"{s.quote}"</Typography>
             </div>
           ))}
         </div>

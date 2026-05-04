@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { AppBar, Toolbar, Typography, Box, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import profileImg from "../../assets/img/13-removebg-preview.svg";
+import profileImg from "../../assets/img/newlogo.png";
 
 const Header = () => {
   const navigate = useNavigate();

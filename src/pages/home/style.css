@@ -198,7 +198,9 @@ html {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .home-page .home-destination-card:hover {
@@ -302,4 +304,84 @@ html {
 .home-page .home-story-cta {
   text-align: center;
   margin-top: 26px;
+}
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+/* wrapper */
+.modal-box {
+  position: relative;
+  display: inline-block;
+}
+
+/* image */
+.image-modal-content {
+  width: 500px;
+  max-width: 80%;
+  max-height: 80%;
+
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.modal-box {
+  position: relative; /* parent must be relative */
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  background: white;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.tooltip-text {
+  position: absolute;
+  top: -28px;
+  right: 0;
+
+  background: black;
+  color: white;
+
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+
+  transition: 0.2s ease;
+  z-index: 9999;
+}
+
+/* hover show */
+.modal-close:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
