@@ -150,3 +150,221 @@
     transform: translateX(0) translateY(0) rotate(0);
   }
 }
+.profile-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Small image */
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Name below */
+.profile-name {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: gold;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+/* Name animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.confetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.confetti span {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+
+  /* start from center */
+  transform: translate(-50%, -50%);
+
+  animation: blast 0.8s ease-out forwards;
+}
+
+/* random colors */
+.confetti span:nth-child(2n) {
+  background: yellow;
+}
+.confetti span:nth-child(3n) {
+  background: blue;
+}
+.confetti span:nth-child(4n) {
+  background: lime;
+}
+.confetti span:nth-child(5n) {
+  background: orange;
+}
+
+@keyframes blast {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
+      scale(1.5);
+  }
+}
+.title-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Title */
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 🔥 Emoji burst */
+.emoji-burst {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  pointer-events: none;
+}
+
+.emoji-burst span {
+  position: absolute;
+  font-size: 20px;
+  animation: burst 0.8s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
+.title-container {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
+/* Title */
+.site-title {
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+/* 🔥 Emoji burst */
+.emoji-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5; /* 🔥 important */
+}
+
+.emoji-burst span {
+  position: absolute;
+  font-size: 24px; /* 🔥 bigger */
+  animation: burst 0.8s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
+.confetti {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.confetti span {
+  position: absolute;
+  width: 10px;
+  height: 6px;
+  border-radius: 2px;
+  animation:
+    burst var(--d) ease-out forwards,
+    spin var(--d) linear forwards;
+}
+
+/* 🎨 colors */
+.confetti span:nth-child(2n) {
+  background: yellow;
+}
+.confetti span:nth-child(3n) {
+  background: cyan;
+}
+.confetti span:nth-child(4n) {
+  background: lime;
+}
+.confetti span:nth-child(5n) {
+  background: pink;
+}
+.confetti span:nth-child(6n) {
+  background: orange;
+}
+
+/* 🎉 explode + fall */
+@keyframes burst {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(var(--x), var(--y));
+  }
+  100% {
+    transform: translate(var(--x), 260px);
+    opacity: 0;
+  }
+}
+
+/* 🔄 rotation */
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: var(--r);
+  }
+}

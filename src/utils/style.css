@@ -115,3 +115,36 @@
 .status-v2.info {
   color: #7fe3ff;
 }
+.error-text {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* optional better UX */
+input,
+textarea {
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.form-message {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* ✅ GREEN for success */
+.form-message.success {
+  color: #28a745; /* nice green */
+}
+
+/* ❌ RED for error */
+.form-message.error {
+  color: #dc3545;
+}

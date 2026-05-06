@@ -3,7 +3,6 @@ import emailjs from "@emailjs/browser";
 import "./style.css";
 
 const ContactForm = () => {
-  const TO_EMAIL = "asabi030110@gmail.com";
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -13,6 +12,8 @@ const ContactForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState({});
 
   const isValidEmail = (value) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -23,16 +24,51 @@ const ContactForm = () => {
       ...prev,
       [field]: value,
     }));
+
+    // remove error while typing
+    setErrors((prev) => ({
+      ...prev,
+      [field]: "",
+    }));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // 🚫 STOP page refresh
+    e.preventDefault();
 
-    var messageBody = `
-Name: ${form.name} 
-Email: ${form.email} 
-Phone: ${form.phone} 
-Message: ${form.message}
+    // ✅ clear old message immediately
+    setMessage("");
+    setStatus("");
+
+    let newErrors = {};
+
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!form.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!isValidEmail(form.email)) {
+      newErrors.email = "Invalid email";
+    }
+
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    } else if (form.phone.length !== 10) {
+      newErrors.phone = "Phone must be 10 digits";
+    }
+
+    setErrors(newErrors);
+
+    // stop if validation fails
+    if (Object.keys(newErrors).length > 0) return;
+
+    setLoading(true);
+
+    const messageBody = `
+Name: ${form.name}
+Email: ${form.email}
+Phone: ${form.phone}
+Message: ${form.message || "No message provided"}
 `;
 
     const templateParams = {
@@ -40,8 +76,6 @@ Message: ${form.message}
       from_name: form.name,
       message: messageBody,
     };
-
-    console.log("📤 Sending email with params:", templateParams);
 
     emailjs
       .send(
@@ -51,7 +85,8 @@ Message: ${form.message}
         "kZ526cYx2CWvju_O3",
       )
       .then(() => {
-        alert("✅ Message sent successfully!");
+        setStatus("success");
+        setMessage("Message sent successfully!");
 
         setForm({
           name: "",
@@ -59,93 +94,74 @@ Message: ${form.message}
           phone: "",
           message: "",
         });
+
+        setErrors({});
+
+        // ✅ auto hide after 3 sec
+        setTimeout(() => {
+          setMessage("");
+          setStatus("");
+        }, 3000);
       })
-      .catch((error) => {
-        console.log("❌ ERROR:", error);
-        alert("❌ Failed to send message");
+      .catch(() => {
+        setStatus("error");
+        setMessage("Failed to send message");
+
+        // auto hide error also
+        setTimeout(() => {
+          setMessage("");
+          setStatus("");
+        }, 3000);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
-  //  const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setStatus("");
 
-  //   const { name, email, phone, message } = form;
-
-  //   if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-  //     setStatus("Please fill all fields.");
-  //     return;
-  //   }
-
-  //   if (!isValidEmail(email)) {
-  //     setStatus("Enter a valid email address.");
-  //     return;
-  //   }
-
-  //   setLoading(true);
-  //   setStatus("Sending...");
-
-  //   emailjs
-  //     .send(
-  //       "service_abi123",
-  //       "template_sn5qc6n",
-  //       {
-  //         name,
-  //         email,
-  //         subject,
-  //         message,
-  //         mail: TO_EMAIL,
-  //       },
-  //       "NaCmRdXc4zbXTWQxF",
-  //     )
-  //     .then(() => {
-  //       setStatus("Message sent successfully ✅");
-  //       setForm({
-  //         name: "",
-  //         email: "",
-  //         subject: "",
-  //         message: "",
-  //       });
-  //     })
-  //     .catch(() => {
-  //       setStatus("Failed to send ❌");
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // };
   return (
     <section className="contact-form-section-v2">
       <div className="contact-form-card-v2">
         <form className="contact-form-v2" onSubmit={handleSubmit}>
+          {/* NAME */}
           <div className="form-group-v2">
-            <label>Your name</label>
+            <label>Your name *</label>
             <input
               type="text"
               value={form.name}
               onChange={(e) => handleChange("name", e.target.value)}
             />
+            {errors.name && <p className="error-text">{errors.name}</p>}
           </div>
 
+          {/* EMAIL */}
           <div className="form-group-v2">
-            <label>Your email</label>
+            <label>Your email *</label>
             <input
               type="email"
               value={form.email}
               onChange={(e) => handleChange("email", e.target.value)}
             />
+            {errors.email && <p className="error-text">{errors.email}</p>}
           </div>
 
+          {/* PHONE */}
           <div className="form-group-v2">
-            <label>Phone</label>
+            <label>Phone *</label>
             <input
               type="text"
               value={form.phone}
-              onChange={(e) => handleChange("phone", e.target.value)}
+              onChange={(e) => {
+                const onlyNums = e.target.value.replace(/\D/g, "");
+                handleChange("phone", onlyNums);
+              }}
+              maxLength={10}
             />
+            {errors.phone && <p className="error-text">{errors.phone}</p>}
           </div>
 
+          {/* MESSAGE */}
           <div className="form-group-v2">
-            <label>Your message</label>
+            <label>Your message (optional)</label>
             <textarea
               rows="6"
               value={form.message}
@@ -153,21 +169,19 @@ Message: ${form.message}
             />
           </div>
 
+          {/* SUBMIT */}
           <button type="submit" className="submit-btn-v2" disabled={loading}>
             {loading ? "SENDING..." : "SUBMIT"}
           </button>
 
-          {status && (
+          {/* SUCCESS / ERROR MESSAGE */}
+          {message !== "" && (
             <p
-              className={`status-v2 ${
-                status.includes("success")
-                  ? "success"
-                  : status.includes("Failed")
-                    ? "error"
-                    : "info"
+              className={`form-message ${
+                status === "success" ? "success" : "error"
               }`}
             >
-              {status}
+              {message}
             </p>
           )}
         </form>

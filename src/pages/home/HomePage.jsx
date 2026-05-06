@@ -11,8 +11,24 @@ import log from "../../assets/img/1.png";
 
 import post from "../../assets/img/post.png";
 import post1 from "../../assets/img/post1.png";
-import { IoClose } from "react-icons/io5";
 import post2 from "../../assets/img/post2.png";
+import post3 from "../../assets/img/post3.png";
+import post4 from "../../assets/img/post4.png";
+import post5 from "../../assets/img/post5.png";
+import post6 from "../../assets/img/post6.png";
+import post7 from "../../assets/img/post7.png";
+import post8 from "../../assets/img/post8.png";
+import post9 from "../../assets/img/post9.png";
+import post10 from "../../assets/img/post10.png";
+import post11 from "../../assets/img/post11.png";
+import post12 from "../../assets/img/post12.png";
+import post13 from "../../assets/img/post13.png";
+import post14 from "../../assets/img/post14.png";
+import post15 from "../../assets/img/post15.png";
+import post16 from "../../assets/img/post19.png";
+import post17 from "../../assets/img/post17.png";
+import post18 from "../../assets/img/post18.png";
+import { IoClose } from "react-icons/io5";
 function HomePage() {
   const navigate = useNavigate();
   const [selectedImg, setSelectedImg] = useState(null);
@@ -64,87 +80,98 @@ function HomePage() {
   const destinations = [
     {
       id: "dest-1",
-      title: "Alpine Peaks",
-      location: "Switzerland",
+
       image: post,
-      duration: "7 days",
     },
     {
       id: "dest-2",
-      title: "Forest Trails",
-      location: "Canada",
+
       image: post1,
-      duration: "5 days",
     },
     {
       id: "dest-3",
-      title: "Coastal Sunrise",
-      location: "Portugal",
+
       image: post2,
-      duration: "4 days",
     },
     {
       id: "dest-4",
-      title: "Desert Stars",
-      location: "Morocco",
-      image: img2,
-      duration: "6 days",
+
+      image: post3,
     },
     {
       id: "dest-5",
-      title: "Island Hopping",
-      location: "Greece",
-      image: img3,
-      duration: "7 days",
+
+      image: post4,
     },
     {
       id: "dest-6",
-      title: "Urban Escape",
-      location: "Japan",
-      image: img4,
-      duration: "3 days",
+
+      image: post5,
     },
     {
       id: "dest-7",
-      title: "Lakeside Calm",
-      location: "Norway",
-      image: img1,
-      duration: "5 days",
+
+      image: post6,
     },
     {
       id: "dest-8",
-      title: "Countryside Roads",
-      location: "France",
-      image: img2,
-      duration: "6 days",
+
+      image: post7,
     },
     {
       id: "dest-9",
-      title: "Amazon Adventures",
-      location: "Brazil",
-      image: img5,
-      duration: "8 days",
+
+      image: post8,
     },
     {
       id: "dest-10",
-      title: "Mountain Villages",
-      location: "Nepal",
-      image: img3,
-      duration: "7 days",
+
+      image: post9,
     },
     {
       id: "dest-11",
-      title: "Rainforest Reboot",
-      location: "Costa Rica",
-      image: img4,
-      duration: "6 days",
+
+      image: post10,
     },
     {
       id: "dest-12",
-      title: "Golden City Walks",
-      location: "India",
-      image: img2,
-      duration: "4 days",
+
+      image: post11,
+    },
+    {
+      id: "dest-13",
+
+      image: post12,
+    },
+    {
+      id: "dest-14",
+
+      image: post13,
+    },
+    {
+      id: "dest-15",
+
+      image: post14,
+    },
+    {
+      id: "dest-16",
+
+      image: post15,
+    },
+    {
+      id: "dest-17",
+
+      image: post16,
+    },
+    {
+      id: "dest-18",
+
+      image: post17,
+    },
+    {
+      id: "dest-19",
+
+      image: post18,
     },
   ];
 
@@ -253,14 +280,14 @@ function HomePage() {
                 className="card-img"
                 onClick={() => setSelectedImg(d.image)} /* 🔥 click */
               />
-              <div className="home-destination-meta">
+              {/* <div className="home-destination-meta">
                 <Typography variant="h6" className="home-destination-name">
                   {d.title}
                 </Typography>
                 <Typography className="home-destination-location">
                   {d.location} • {d.duration}
                 </Typography>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
