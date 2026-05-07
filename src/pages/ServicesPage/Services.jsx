@@ -15,9 +15,9 @@ import img from "../../assets/img/dark.avif";
 import MailPopup from "../../utils/mail/MailPopup";
 import { useState } from "react";
 import flySound from "../../assets/img/fly.mp3";
-import img1 from "../../assets/img/3.jpeg";
-import img2 from "../../assets/img/1.jpeg";
-import img3 from "../../assets/img/3.jpeg";
+import img1 from "../../assets/img/n3.jpeg";
+import img2 from "../../assets/img/n4.jpeg";
+import img3 from "../../assets/img/n5.jpeg";
 import img4 from "../../assets/img/7.jpeg";
 import img5 from "../../assets/img/images.jpeg";
 import travel from "../../assets/img/business-travel.jpg";
@@ -65,7 +65,9 @@ const data1 = [
 
 const Services = () => {
   const audioRef = useRef(null);
-
+  const [clickedJobs, setClickedJobs] = useState(() => {
+    return JSON.parse(localStorage.getItem("clickedJobs")) || {};
+  });
   const [open, setOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -156,23 +158,42 @@ const Services = () => {
             <Box className="airport-card">
               <Typography
                 variant="h4"
-                sx={{ textAlign: "center", color: "gold" }}
+                sx={{ textAlign: "center", color: "gold", mb: 2 }}
               >
-                ✈️ Hotel
+                ✅ Profile Screening{" "}
               </Typography>
 
-              <Typography>
-                <b>Category:</b> CATEGORY
+              <Typography sx={{ mb: 1 }}>• Foreign verification</Typography>
+
+              <Typography sx={{ mb: 1 }}>
+                • CGFNS (Commission on Graduates of Foreign Nursing Schools)
               </Typography>
-              <Typography>
-                <b>Qualification:</b> QUALIFICATION
+
+              <Typography sx={{ mb: 1 }}>• SNB verification</Typography>
+
+              <Typography sx={{ mb: 1 }}>
+                • Good standing certificate
               </Typography>
-              <Typography>
-                <b>Gender:</b> GENDER
+
+              <Typography sx={{ mb: 1 }}>• Nursing registration</Typography>
+
+              <Typography sx={{ mb: 1 }}>
+                • NOC (No Objection Certificate)
               </Typography>
-              <Typography>
-                <b>Salary:</b> SALARY
+
+              <Typography sx={{ mb: 1 }}>
+                • All Dataflow verification
               </Typography>
+
+              <Typography sx={{ mb: 1 }}>• Overseas job guidance</Typography>
+
+              <Typography sx={{ mb: 1 }}>• College verification</Typography>
+
+              <Typography sx={{ mb: 1 }}>
+                • ANM, GNM, BSc, MSc, PhD Renewal
+              </Typography>
+
+              <Typography>• Transcript</Typography>
             </Box>
 
             {/* TABLE 1 */}
@@ -202,21 +223,53 @@ const Services = () => {
                       <TableCell>{row.mandatory}</TableCell>
                       <TableCell>{row.quantity}</TableCell>
                       <TableCell>{row.salary}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ position: "relative" }}>
                         <Link
-                          // href="#"
-                          onClick={() => handleOpen(row)}
+                          onClick={() => {
+                            handleOpen(row);
+
+                            // update state
+                            const updated = {
+                              ...clickedJobs,
+                              [row.id]: true,
+                            };
+
+                            setClickedJobs(updated);
+
+                            // save permanently
+                            localStorage.setItem(
+                              "clickedJobs",
+                              JSON.stringify(updated),
+                            );
+                          }}
                           className="apply-link"
                         >
                           Apply
-                        </Link>{" "}
-                        <Link
-                          // href="#"
-                          onClick={() => handleOpen(row)}
-                          className="new-link"
-                        >
-                          New
                         </Link>
+
+                        {/* NEW Badge */}
+                        {!clickedJobs[row.id] && (
+                          <span
+                            className="new-badge"
+                            onClick={() => {
+                              handleOpen(row);
+
+                              const updated = {
+                                ...clickedJobs,
+                                [row.id]: true,
+                              };
+
+                              setClickedJobs(updated);
+
+                              localStorage.setItem(
+                                "clickedJobs",
+                                JSON.stringify(updated),
+                              );
+                            }}
+                          >
+                            NEW
+                          </span>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -251,21 +304,53 @@ const Services = () => {
                       <TableCell>{row.mandatory}</TableCell>
                       <TableCell>{row.quantity}</TableCell>
                       <TableCell>{row.salary}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ position: "relative" }}>
                         <Link
-                          // href="#"
-                          onClick={() => handleOpen(row)}
+                          onClick={() => {
+                            handleOpen(row);
+
+                            // update state
+                            const updated = {
+                              ...clickedJobs,
+                              [row.id]: true,
+                            };
+
+                            setClickedJobs(updated);
+
+                            // save permanently
+                            localStorage.setItem(
+                              "clickedJobs",
+                              JSON.stringify(updated),
+                            );
+                          }}
                           className="apply-link"
                         >
                           Apply
-                        </Link>{" "}
-                        <Link
-                          // href="#"
-                          onClick={() => handleOpen(row)}
-                          className="new-link"
-                        >
-                          New
                         </Link>
+
+                        {/* NEW Badge */}
+                        {!clickedJobs[row.id] && (
+                          <span
+                            className="new-badge"
+                            onClick={() => {
+                              handleOpen(row);
+
+                              const updated = {
+                                ...clickedJobs,
+                                [row.id]: true,
+                              };
+
+                              setClickedJobs(updated);
+
+                              localStorage.setItem(
+                                "clickedJobs",
+                                JSON.stringify(updated),
+                              );
+                            }}
+                          >
+                            NEW
+                          </span>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -297,21 +382,53 @@ const Services = () => {
 
                       <TableCell>{row.quantity}</TableCell>
                       <TableCell>{row.salary}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ position: "relative" }}>
                         <Link
-                          // href="#"
-                          onClick={() => handleOpen(row)}
+                          onClick={() => {
+                            handleOpen(row);
+
+                            // update state
+                            const updated = {
+                              ...clickedJobs,
+                              [row.id]: true,
+                            };
+
+                            setClickedJobs(updated);
+
+                            // save permanently
+                            localStorage.setItem(
+                              "clickedJobs",
+                              JSON.stringify(updated),
+                            );
+                          }}
                           className="apply-link"
                         >
                           Apply
-                        </Link>{" "}
-                        <Link
-                          // href="#"
-                          onClick={() => handleOpen(row)}
-                          className="new-link"
-                        >
-                          New
                         </Link>
+
+                        {/* NEW Badge */}
+                        {!clickedJobs[row.id] && (
+                          <span
+                            className="new-badge"
+                            onClick={() => {
+                              handleOpen(row);
+
+                              const updated = {
+                                ...clickedJobs,
+                                [row.id]: true,
+                              };
+
+                              setClickedJobs(updated);
+
+                              localStorage.setItem(
+                                "clickedJobs",
+                                JSON.stringify(updated),
+                              );
+                            }}
+                          >
+                            NEW
+                          </span>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}

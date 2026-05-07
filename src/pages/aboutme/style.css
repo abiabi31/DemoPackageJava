@@ -241,3 +241,115 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* =========================
+   BOOK NOW BUTTON
+========================= */
+
+.book-btn {
+  position: relative;
+
+  padding: 14px 34px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 999px;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #ffb703 0%, #ff7b00 45%, #ff006e 100%);
+
+  box-shadow:
+    0 8px 20px rgba(255, 123, 0, 0.35),
+    0 0 25px rgba(255, 0, 110, 0.22);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  animation: pulseBtn 2s infinite;
+}
+
+/* Shine animation */
+.book-btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: -40%;
+  left: -70%;
+
+  width: 45%;
+  height: 200%;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  transform: rotate(25deg);
+
+  animation: shineBtn 3s linear infinite;
+}
+
+/* Hover */
+.book-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 14px 30px rgba(255, 123, 0, 0.45),
+    0 0 35px rgba(255, 0, 110, 0.35);
+}
+
+/* Click */
+.book-btn:active {
+  transform: scale(0.96);
+}
+
+/* Pulse */
+@keyframes pulseBtn {
+  0% {
+    box-shadow:
+      0 8px 20px rgba(255, 123, 0, 0.35),
+      0 0 18px rgba(255, 0, 110, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 14px 34px rgba(255, 123, 0, 0.5),
+      0 0 38px rgba(255, 0, 110, 0.35);
+  }
+
+  100% {
+    box-shadow:
+      0 8px 20px rgba(255, 123, 0, 0.35),
+      0 0 18px rgba(255, 0, 110, 0.15);
+  }
+}
+
+/* Shine move */
+@keyframes shineBtn {
+  0% {
+    left: -70%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .book-btn {
+    width: 100%;
+
+    padding: 13px 20px;
+
+    font-size: 14px;
+  }
+}

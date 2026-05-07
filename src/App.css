@@ -1,90 +1,141 @@
 body {
   margin: 0;
-  /* allow vertical page scrolling; keep horizontal overflow hidden */
   overflow-x: hidden;
+  background: #020311;
 }
 
 :root {
-  /* MUI desktop AppBar height (default is ~64px). */
+  /* Header height */
   --app-header-height: 64px;
 }
 
 .app-shell {
   min-height: 100vh;
   position: relative;
-  /* Base gradient behind everything */
+
+  /* Main dark futuristic background */
   background:
     radial-gradient(
       1200px 600px at 70% -10%,
-      rgba(255, 215, 0, 0.12),
+      rgba(255, 215, 0, 0.08),
       rgba(0, 0, 0, 0) 55%
     ),
-    linear-gradient(135deg, #05060c 0%, #0b1739 40%, #06101f 100%);
+    linear-gradient(135deg, #020311 0%, #0d1320 45%, #06101f 100%);
+
   overflow-x: hidden;
 }
 
-/* Front-model-ish 3D look (fixed so it stays behind header/footer). */
+/* Background futuristic layer */
 .app-shell::before {
   content: "";
   position: fixed;
   inset: -20%;
   pointer-events: none;
   z-index: 0;
+
+  /* Optional image */
   /* background-image: url("/images1.svg"); */
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 
   transform: perspective(900px) rotateX(18deg) rotateY(-12deg) translateY(-4%);
-  opacity: 0.1;
-  filter: blur(0.5px) saturate(1.2);
+
+  opacity: 0.06;
+  filter: blur(1px) saturate(1.1);
 }
 
+/* Top glow */
 .app-shell::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
+
   background: radial-gradient(
     circle at 50% 10%,
-    rgba(0, 242, 255, 0.09),
+    rgba(0, 242, 255, 0.07),
     rgba(0, 0, 0, 0) 55%
   );
 }
 
+/* =========================
+   GLOBAL GLOBE
+========================= */
+
 .global-globe-wrap {
   position: fixed;
-  top: calc(var(--app-header-height) + 20px);
+
+  top: calc(var(--app-header-height) + 30px);
   left: 50%;
-  transform: translateX(-50%);
-  width: clamp(260px, 42vw, 620px);
+
+  transform: translateX(-50%) scale(0.82);
+
+  width: clamp(220px, 30vw, 450px);
+
   aspect-ratio: 1 / 1;
+
   z-index: 0;
+
   pointer-events: none;
-  opacity: 0.9;
+
+  opacity: 0.7;
+
+  mix-blend-mode: screen;
 }
 
 .global-globe-canvas {
   width: 100%;
   height: 100%;
   display: block;
+
   border-radius: 50%;
-  filter: drop-shadow(0 18px 40px rgba(0, 210, 255, 0.18))
-    drop-shadow(0 0 18px rgba(255, 215, 0, 0.09));
+
+  opacity: 0.9;
+
+  filter: blur(0.3px) drop-shadow(0 10px 24px rgba(0, 210, 255, 0.1))
+    drop-shadow(0 0 10px rgba(255, 215, 0, 0.04));
 }
+
+/* =========================
+   MAIN CONTENT
+========================= */
 
 .app-main {
   position: relative;
   z-index: 1;
+
   padding-top: var(--app-header-height);
-  /* display: flex; */
+
+  display: flex;
   flex-direction: column;
-  align-items: center; /* center content horizontally */
+  /* align-items: center; */
 }
 
-/* Keep footer above the fixed background layers. */
+/* Footer above bg */
 .footer-container {
   position: relative;
   z-index: 1;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 100px) {
+  .global-globe-wrap {
+    width: clamp(180px, 58vw, 300px);
+
+    top: calc(var(--app-header-height) + 40px);
+
+    opacity: 0.55;
+
+    transform: translateX(-50%) scale(0.75);
+  }
+
+  .global-globe-canvas {
+    filter: blur(0.5px) drop-shadow(0 8px 18px rgba(0, 210, 255, 0.08));
+  }
 }

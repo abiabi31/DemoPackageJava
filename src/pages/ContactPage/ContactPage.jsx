@@ -10,6 +10,13 @@ import img3 from "../../assets/img/c.jpeg";
 import img4 from "../../assets/img/d.jpeg";
 import img5 from "../../assets/img/see.jpg";
 import img6 from "../../assets/img/4.jpeg";
+import img7 from "../../assets/img/n7.jpeg";
+import img8 from "../../assets/img/n8.jpeg";
+import img9 from "../../assets/img/n9.jpeg";
+import img10 from "../../assets/img/n10.jpeg";
+import img11 from "../../assets/img/n11.jpeg";
+import img12 from "../../assets/img/n3.jpeg";
+
 import img from "../../assets/img/dark.avif";
 import ContactForm from "../../utils/ContactForm";
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -60,7 +67,20 @@ const ContactPage = () => {
     },
   ];
 
-  const galleryImages = [img1, img2, img3, img4, img5, img6];
+  const galleryImages = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+    img10,
+    img11,
+    img12,
+  ];
 
   const isValidEmail = (value) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -261,7 +281,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      <section className="faq-section-v2">
+      {/* <section className="faq-section-v2">
         <p className="mini-heading">FREQUENTLY ASKED QUESTIONS</p>
         <div className="title-row faq-title-row">
           <h2>FAQs</h2>
@@ -277,7 +297,7 @@ const ContactPage = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section className="gallery-strip-section">
         <div className="gallery-strip-title">INSTAGRAM</div>

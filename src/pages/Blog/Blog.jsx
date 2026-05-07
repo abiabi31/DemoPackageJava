@@ -4,57 +4,75 @@ import { useRef } from "react";
 import df from "../../assets/img/df.mp4";
 import "./style.css";
 import flySound from "../../assets/img/fly.mp3";
-import img1 from "../../assets/img/3.jpeg";
-import img2 from "../../assets/img/1.jpeg";
-import img3 from "../../assets/img/3.jpeg";
-import img4 from "../../assets/img/7.jpeg";
-import img5 from "../../assets/img/images.jpeg";
-
+import img1 from "../../assets/img/n1.png";
+import img2 from "../../assets/img/n6.jpeg";
+import img3 from "../../assets/img/n3.jpeg";
+import img4 from "../../assets/img/n4.jpeg";
+import img5 from "../../assets/img/n5.jpeg";
+import MechanicalEngineer from "../../assets/img/MechanicalEngineer.jpeg";
+import CivilEngineer from "../../assets/img/CivilEngineer.jpeg";
+import mason from "../../assets/img/mason.jpeg";
+import Welder from "../../assets/img/Welder.jpeg";
+import driver from "../../assets/img/driver.jpeg";
 function Blog() {
   const audioRef = useRef(null);
 
   const destinations = [
     {
       id: "dest-1",
-      title: "Alpine Peaks",
-      location: "Switzerland",
+      title: "Staff Nurse",
+      location: "Dubai",
       image: img4,
-      duration: "7 days",
+      duration: "Full Time",
     },
     {
       id: "dest-2",
-      title: "Forest Trails",
-      location: "Canada",
+      title: "ICU Nurse",
+      location: "Qatar",
       image: img1,
-      duration: "5 days",
+      duration: "Contract",
     },
     {
       id: "dest-3",
-      title: "Coastal Sunrise",
-      location: "Portugal",
-      image: img5,
-      duration: "4 days",
+      title: "Civil Engineer",
+      location: "Saudi Arabia",
+      image: CivilEngineer,
+      duration: "Full Time",
     },
     {
       id: "dest-4",
-      title: "Desert Stars",
-      location: "Morocco",
-      image: img2,
-      duration: "6 days",
+      title: "Mechanical Engineer",
+      location: "Kuwait",
+      image: MechanicalEngineer,
+      duration: "Shift Based",
     },
     {
       id: "dest-5",
-      title: "Island Hopping",
-      location: "Greece",
-      image: img3,
-      duration: "7 days",
+      title: "Mason",
+      location: "Oman",
+      image: mason,
+      duration: "Full Time",
     },
     {
       id: "dest-6",
-      title: "Urban Escape",
-      location: "Japan",
-      image: img4,
-      duration: "3 days",
+      title: "Welder",
+      location: "Malaysia",
+      image: Welder,
+      duration: "Project Based",
+    },
+    {
+      id: "dest-7",
+      title: "Registered Nurse",
+      location: "Singapore",
+      image: img2,
+      duration: "Full Time",
+    },
+    {
+      id: "dest-8",
+      title: "Driver",
+      location: "Bahrain",
+      image: driver,
+      duration: "Contract",
     },
   ];
 
@@ -77,7 +95,14 @@ function Blog() {
     <>
       {/* Video Section */}
       <Box className="video-section">
-        <video className="container-bg-video" autoPlay loop muted playsInline>
+        <video
+          className="container-bg-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
           <source src={df} type="video/mp4" />
         </video>
 
@@ -89,9 +114,9 @@ function Blog() {
           </p>
         </Box>
 
-        <div className="plane" onClick={handlePlaneClick}>
+        {/* <div className="plane" onClick={handlePlaneClick}>
           ✈️
-        </div>
+        </div> */}
       </Box>
 
       <audio ref={audioRef} preload="auto">
@@ -101,52 +126,58 @@ function Blog() {
       {/* Cards Section */}
       <Box className="cards-section">
         <Box className="blog-content">
-          <h2>Discover Meaningful Travel Experiences</h2>
+          <h2>Travel & Job Opportunities in One Place</h2>
 
           <p>
-            Travel is not just about visiting new places — it is about
-            experiencing the world in a way that stays with you long after the
-            journey ends. Each destination offers a unique blend of culture,
-            landscape, and stories waiting to be explored.
+            Travel is not only about visiting new places — it is also about
+            finding better opportunities for your future. We provide both tour
+            services and job placement support to help you move forward with
+            confidence.
           </p>
 
           <p>
-            At our core, we focus on delivering thoughtfully curated travel
-            experiences that go beyond the ordinary. From iconic landmarks to
-            lesser-known destinations, we bring you closer to places that truly
-            matter. Our goal is to help you travel smarter, deeper, and more
-            meaningfully.
+            Through our platform, you can explore well-planned tour packages and
+            also apply for job opportunities easily using our application form.
+            We make the entire process simple, fast, and user-friendly for
+            everyone.
           </p>
 
           <p>
-            Whether you are seeking relaxation, adventure, or cultural
-            immersion, our insights are designed to guide you at every step. We
-            provide practical travel advice, destination highlights, and
-            real-world tips to ensure a seamless and enjoyable experience.
+            Our travel services include destination planning, ticket booking,
+            visa guidance, and comfortable accommodation arrangements. We ensure
+            that your journey is smooth, safe, and enjoyable from start to
+            finish.
           </p>
 
           <p>
-            We understand that every traveler is different. That’s why our
-            content is crafted to suit a wide range of travel styles — from solo
-            explorers to families and business travelers. Every journey deserves
-            careful planning and the right inspiration.
+            At the same time, our job placement services are designed to connect
+            skilled individuals with trusted companies. We carefully review your
+            details and match you with opportunities that suit your experience
+            and career goals.
           </p>
 
           <p>
-            Through our platform, we aim to simplify travel decisions while
-            enhancing the overall experience. With a focus on reliability,
-            comfort, and authenticity, we help you make the most of every trip.
+            Whether you are planning a vacation, looking to work abroad, or
+            exploring new career paths, we provide complete support at every
+            stage. Our team is committed to guiding you with accurate
+            information and reliable service.
           </p>
 
           <p>
-            Explore new destinations, gain fresh perspectives, and create
-            lasting memories. Your journey begins with the right guidance — and
-            we are here to provide it.
+            By filling out our form, you can quickly register your interest for
+            job opportunities or travel services. This helps us understand your
+            needs and provide the best possible solutions tailored to you.
           </p>
 
           <p>
-            Start planning today and experience travel the way it was meant to
-            be.
+            We believe in transparency, trust, and customer satisfaction. Our
+            goal is to make both travel and job searching easier, faster, and
+            more efficient.
+          </p>
+
+          <p>
+            Start your journey today — explore new destinations, discover better
+            job opportunities, and build a brighter future with us.
           </p>
         </Box>
         <Box className="destination-section">
@@ -159,7 +190,7 @@ function Blog() {
               />
               <Box className="destination-content">
                 <h3>{item.title}</h3>
-                <p>{item.location}</p>
+                {/* <p>{item.location}</p> */}
                 <span>{item.duration}</span>
                 <Button variant="contained" className="explore-btn">
                   Explore

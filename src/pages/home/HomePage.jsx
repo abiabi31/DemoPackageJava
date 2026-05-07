@@ -1,10 +1,16 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import img1 from "../../assets/img/3.jpeg";
-import img2 from "../../assets/img/1.jpeg";
-import img3 from "../../assets/img/3.jpeg";
+import img1 from "../../assets/img/n4.jpeg";
+import img2 from "../../assets/img/n5.jpeg";
+import img3 from "../../assets/img/n6.jpeg";
 import img4 from "../../assets/img/7.jpeg";
-import img5 from "../../assets/img/images.jpeg";
+import img5 from "../../assets/img/n8.jpeg";
+
+import head from "../../assets/img/1.jpeg";
+import head2 from "../../assets/img/2.jpeg";
+import head3 from "../../assets/img/3.jpeg";
+import head4 from "../../assets/img/6.jpeg";
+import head5 from "../../assets/img/8.jpeg";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import log from "../../assets/img/1.png";
@@ -38,31 +44,31 @@ function HomePage() {
       title: "Explore Nature",
       quote:
         "Travel makes one modest. You see what a tiny place you occupy in the world.",
-      image: img1,
+      image: img5,
     },
     {
       id: "slide-mountains",
       title: "Mountain Escape",
       quote: "The mountains are calling and I must go.",
-      image: img2,
+      image: head2,
     },
     {
       id: "slide-adventure",
       title: "Adventure Time",
       quote: "Life is either a daring adventure or nothing at all.",
-      image: img3,
+      image: head3,
     },
     {
       id: "slide-beauty",
       title: "Discover Beauty",
       quote: "Wherever you go becomes a part of you somehow.",
-      image: img4,
+      image: head4,
     },
     {
       id: "slide-journey",
       title: "Journey Begins",
       quote: "Adventure is worthwhile in itself.",
-      image: img5,
+      image: head5,
     },
   ];
 
@@ -175,56 +181,60 @@ function HomePage() {
     },
   ];
 
-  const travelTips = [
+  const careerTips = [
     {
       step: 1,
-      title: "Pick a vibe",
-      desc: "Choose nature, food, beaches, mountains, or culture.",
-      icon: "🧭",
+      icon: "📝",
+      title: "Create Your Profile",
+      desc: "Build a professional profile with your skills and experience.",
     },
     {
       step: 2,
-      title: "Plan your days",
-      desc: "Balance must-dos with downtime so it feels effortless.",
-      icon: "🗓️",
+      icon: "💼",
+      title: "Apply for Jobs",
+      desc: "Explore multiple job opportunities that match your career goals.",
     },
     {
       step: 3,
-      title: "Pack smart",
-      desc: "Bring layers, chargers, and comfortable shoes for long walks.",
-      icon: "🎒",
+      icon: "🤝",
+      title: "Attend Interviews",
+      desc: "Connect with employers and attend scheduled interviews confidently.",
     },
     {
       step: 4,
-      title: "Book ahead",
-      desc: "Secure flights and stays early to get better options and prices.",
-      icon: "✈️",
+      icon: "🚀",
+      title: "Start Your Career",
+      desc: "Get hired and begin your successful professional journey.",
     },
   ];
 
   const stories = [
     {
       id: "story-1",
-      name: "Ava",
-      quote: "Every trip taught me something new about myself.",
+      name: "Arun Kumar",
+      quote:
+        "Halfway Manpower Consultant helped me secure a great overseas job opportunity.",
       image: img5,
     },
     {
       id: "story-2",
-      name: "Noah",
-      quote: "We thought it would be relaxing. It turned into an adventure!",
+      name: "Priya S",
+      quote:
+        "The recruitment process was smooth and professional from start to finish.",
       image: img4,
     },
     {
       id: "story-3",
-      name: "Mia",
-      quote: "The best memories are the ones you make on the way.",
+      name: "Rahul M",
+      quote:
+        "I found the perfect career opportunity with excellent support from the team.",
       image: img1,
     },
     {
       id: "story-4",
-      name: "Ethan",
-      quote: "New places, new perspectives, and zero regrets.",
+      name: "Sneha R",
+      quote:
+        "Excellent guidance and quick placement process helped me start my career confidently.",
       image: img2,
     },
   ];
@@ -247,7 +257,10 @@ function HomePage() {
             <Typography variant="h6" className="quote">
               {slides[index].quote}
             </Typography>
-            <Button className="travel-btn" onClick={() => navigate("/blogs")}>
+            <Button
+              className="travel-btn"
+              onClick={() => navigate("/services")}
+            >
               Start Your Journey
             </Button>
           </Box>
@@ -309,16 +322,18 @@ function HomePage() {
       )}
       <section className="home-section home-tips">
         <Typography variant="h4" className="home-section-title">
-          Travel Planning Made Easy
+          Career Guidance Made Easy
         </Typography>
 
         <div className="home-tips-grid">
-          {travelTips.map((t) => (
+          {careerTips.map((t) => (
             <div key={t.step} className="home-tip-card">
               <div className="home-tip-icon">{t.icon}</div>
+
               <Typography variant="h6" className="home-tip-title">
                 {t.step}. {t.title}
               </Typography>
+
               <Typography className="home-tip-desc">{t.desc}</Typography>
             </div>
           ))}
@@ -327,24 +342,26 @@ function HomePage() {
 
       <section className="home-section home-stories">
         <Typography variant="h4" className="home-section-title">
-          Traveler Stories
+          Employee Success Stories
         </Typography>
 
         <div className="home-stories-grid">
           {stories.map((s) => (
             <div key={s.id} className="home-story-card">
               <img src={s.image} alt={s.name} />
-              <Typography variant="h6" className="home-story-name">
+
+              {/* <Typography variant="h6" className="home-story-name">
                 {s.name}
-              </Typography>
+              </Typography> */}
+
               <Typography className="home-story-quote">"{s.quote}"</Typography>
             </div>
           ))}
         </div>
 
         <div className="home-story-cta">
-          <Button variant="contained" onClick={() => navigate("/blogs")}>
-            Read More Travel Ideas
+          <Button variant="contained" onClick={() => navigate("/services")}>
+            Explore Job Opportunities
           </Button>
         </div>
       </section>

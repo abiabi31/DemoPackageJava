@@ -4,44 +4,42 @@ import logo from "../../assets/img/newlogo.png";
 
 function LoadingScreen() {
   const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
-    // Show loading screen for 3 seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 1000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
-
   if (!isVisible) return null;
 
   return (
     <div className="loading-screen">
-      {/* Animated background */}
+      {/* Background */}
       <div className="bg-gradient"></div>
 
-      {/* Glowing effect */}
+      {/* Glow */}
       <div className="glow-effect"></div>
-      <img src={logo} className="center-logo" />
-      {/* Loading container */}
+
+      {/* Logo */}
+      <img src={logo} className="center-logo" alt="logo" />
+
+      {/* Loader */}
       <div className="loading-container">
-        {/* 3D Rotating Globe */}
         <div className="globe-wrapper">
           <div className="globe">
-            {/* Globe segments for 3D effect */}
             <div className="globe-segment"></div>
             <div className="globe-segment"></div>
             <div className="globe-segment"></div>
 
-            {/* Rotating rings */}
             <div className="ring ring-x"></div>
             <div className="ring ring-y"></div>
             <div className="ring ring-z"></div>
           </div>
         </div>
 
-        {/* Loading text */}
         <div className="loading-text">
           <p>Loading your travel experience</p>
           <div className="dots">
@@ -51,7 +49,6 @@ function LoadingScreen() {
           </div>
         </div>
 
-        {/* Progress bar */}
         <div className="progress-bar">
           <div className="progress-fill"></div>
         </div>

@@ -1,10 +1,29 @@
 import React from "react";
 import "./style.css";
-import profileImg from "../../assets/img/5.jpeg";
-import travel1 from "../../assets/img/images.jpeg";
-import travel2 from "../../assets/img/4.jpeg";
-import travel3 from "../../assets/img/6.jpeg";
+import profileImg from "../../assets/img/pic.png";
+import travel1 from "../../assets/img/m.jpeg";
+import travel2 from "../../assets/img/m1.jpeg";
+import travel3 from "../../assets/img/m2.jpeg";
+import travel4 from "../../assets/img/m3.jpeg";
+import travel5 from "../../assets/img/m4.jpeg";
+import travel6 from "../../assets/img/m5.jpeg";
+import travel7 from "../../assets/img/m7.jpeg";
+import travel8 from "../../assets/img/m8.jpeg";
+
+import { useState } from "react";
+import MailPopup from "../../utils/mail/MailPopup";
 const AboutPage = () => {
+  const [open, setOpen] = useState(false);
+  const galleryImages = [
+    travel1,
+    travel2,
+    travel3,
+    travel4,
+    travel5,
+    travel6,
+    travel7,
+    travel8,
+  ];
   const skills = [
     "Travel Planning",
     "Photography",
@@ -49,26 +68,54 @@ const AboutPage = () => {
         </div>
 
         <div className="about-right">
-          <p className="section-mini">WHO AM I</p>
-          <h2>Passionate Traveler & Creative Explorer</h2>
+          <p className="section-mini">ONLINE COUNSELING</p>
+
+          <h2>Your Health Is Our Priority</h2>
+
           <p>
-            I enjoy exploring new places, learning about different cultures, and
-            sharing my travel experiences with others. My goal is to inspire
-            people through simple stories, beautiful visuals, and practical
-            travel ideas.
+            Online guidance and counseling services are available to support
+            your mental and emotional well-being. We care for your health and
+            ensure you receive proper guidance with care and confidence.
           </p>
+
           <p>
-            I also enjoy content creation, photography, and building clean,
-            modern digital experiences. Every trip teaches me something new, and
-            I love turning those moments into meaningful memories.
+            We provide professional support for mental health guidance, stress
+            management, emotional balance, and healthy lifestyle habits to help
+            you live a peaceful and positive life.
           </p>
 
           <div className="skills-list">
-            {skills.map((skill, index) => (
-              <span key={index} className="skill-chip">
-                {skill}
-              </span>
-            ))}
+            <span className="skill-chip">Mental Health Guidance</span>
+            <span className="skill-chip">General Well-being</span>
+            <span className="skill-chip">Stress Management</span>
+            <span className="skill-chip">Social & Emotional Support</span>
+            <span className="skill-chip">Healthy Mind Habits</span>
+            <span className="skill-chip">Anxiety Guidance</span>
+            <span className="skill-chip">Depression Support</span>
+          </div>
+
+          <div style={{ marginTop: "25px" }}>
+            <h3 style={{ color: "gold", marginBottom: "10px" }}>
+              Counselor Details
+            </h3>
+            <p>
+              <strong>Arun.K</strong>
+            </p>
+            <p>MSc Nursing (Psychiatric & Counseling)</p>
+            <p>
+              <strong>WhatsApp:</strong> 9952687642
+            </p>
+            <p>
+              <strong>Instagram:</strong> @ar.un5354
+            </p>
+            <button
+              className="book-btn"
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
+              Book Now
+            </button>{" "}
           </div>
         </div>
       </section>
@@ -83,27 +130,35 @@ const AboutPage = () => {
       </section>
 
       <section className="about-gallery">
-        <div className="gallery-card large">
-          <img src={travel1} alt="Travel 1" />
-        </div>
-        <div className="gallery-card">
-          <img src={travel2} alt="Travel 2" />
-        </div>
-        <div className="gallery-card">
-          <img src={travel3} alt="Travel 3" />
-        </div>
+        {galleryImages.map((img, index) => (
+          <div
+            key={index}
+            className={`gallery-card ${index === 0 ? "large" : ""}`}
+          >
+            <img src={img} alt={`Gallery ${index + 1}`} />
+          </div>
+        ))}
       </section>
 
       <section className="about-journey">
-        <p className="section-mini">MY JOURNEY</p>
-        <h2>Why I Love What I Do</h2>
+        <p className="section-mini">OUR SERVICES</p>
+
+        <h2>We Care About Your Future & Well-being</h2>
+
         <p>
-          Travel is not just about visiting places. It is about feeling new
-          experiences, meeting people, understanding cultures, and creating
-          unforgettable moments. I believe every journey has a story, and I love
-          bringing those stories to life.
+          We are committed to supporting individuals through professional
+          manpower consultancy, overseas guidance, verification services, and
+          mental health counseling. Our goal is to provide trusted support that
+          helps people build a successful and confident future.
+        </p>
+
+        <p>
+          From career opportunities to emotional well-being, we believe every
+          person deserves proper guidance, genuine care, and the right direction
+          to achieve their goals and live a better life.
         </p>
       </section>
+      <MailPopup open={open} setOpen={setOpen} />
     </div>
   );
 };

@@ -274,15 +274,84 @@
 }
 
 /* CARD */
+/* CARD CONTAINER */
 .airport-card {
   width: 100%;
-  max-width: 1100px;
-  padding: 20px;
-  border-radius: 15px;
+  max-width: 420px; /* 👈 small card */
 
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
+  padding: 22px;
+
+  border-radius: 22px;
+
+  margin: 20px auto; /* 👈 center */
+
+  color: #000000;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 215, 0, 0.18);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(0, 217, 255, 0.08);
+
+  transition: all 0.35s ease;
+}
+
+/* Hover Effect */
+.airport-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(255, 215, 0, 0.12);
+}
+
+/* Title */
+.airport-card h4 {
+  text-align: center;
+
+  color: gold;
+
+  font-weight: 700;
+
+  margin-bottom: 18px;
+
+  letter-spacing: 1px;
+}
+
+/* Text alignment */
+.airport-card p {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  margin-bottom: 10px;
+
+  color: rgba(0, 0, 0, 0.92);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .airport-card {
+    max-width: 92%;
+
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .airport-card p {
+    font-size: 14px;
+  }
 }
 .gallery-container {
   display: grid;
@@ -337,4 +406,154 @@
   font-size: 32px;
   font-weight: bold;
   z-index: 2;
+}
+/* APPLY LINK */
+.apply-link {
+  cursor: pointer;
+  font-weight: 600;
+  color: #00d9ff;
+  text-decoration: none;
+  position: relative;
+}
+
+/* FLOAT */
+@keyframes floatAnim {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* =========================
+   PREMIUM NEW BADGE
+========================= */
+
+.new-badge {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 12px;
+  padding: 5px 14px;
+
+  min-width: 58px;
+  height: 28px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #ff006e 0%, #ff4d6d 45%, #ffbe0b 100%);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  user-select: none;
+
+  box-shadow:
+    0 4px 12px rgba(255, 0, 110, 0.35),
+    0 0 18px rgba(255, 190, 11, 0.25);
+
+  animation:
+    pulseGlow 1.8s ease-in-out infinite,
+    floatBadge 2.5s ease-in-out infinite;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Shine effect */
+.new-badge::before {
+  content: "";
+
+  position: absolute;
+
+  top: -40%;
+  left: -60%;
+
+  width: 40%;
+  height: 180%;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  transform: rotate(25deg);
+
+  animation: shineMove 2.8s linear infinite;
+}
+
+/* Hover */
+.new-badge:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 6px 18px rgba(255, 0, 110, 0.45),
+    0 0 24px rgba(255, 190, 11, 0.4);
+}
+
+/* Click */
+.new-badge:active {
+  transform: scale(0.96);
+}
+
+/* Glow Pulse */
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 4px 12px rgba(255, 0, 110, 0.3),
+      0 0 14px rgba(255, 190, 11, 0.18);
+  }
+
+  50% {
+    box-shadow:
+      0 8px 22px rgba(255, 0, 110, 0.55),
+      0 0 28px rgba(255, 190, 11, 0.45);
+  }
+
+  100% {
+    box-shadow:
+      0 4px 12px rgba(255, 0, 110, 0.3),
+      0 0 14px rgba(255, 190, 11, 0.18);
+  }
+}
+
+/* Floating */
+@keyframes floatBadge {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Shine movement */
+@keyframes shineMove {
+  0% {
+    left: -60%;
+  }
+
+  100% {
+    left: 140%;
+  }
 }
