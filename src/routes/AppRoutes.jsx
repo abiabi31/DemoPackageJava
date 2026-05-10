@@ -1,7 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "../pages/login/login";
-import DashboardPage from "../pages/dashboard/Dashboard";
-import PrivateRoute from "../routes/PrivateRoute";
+import Login from "../pages/Login";
+import Dashboard from "../pages/Dashboard";
+import PalayaYaripadi from "../pages/PalayaYaripadi";
+import PuthiyaYaripadi from "../pages/PuthiyaYaripadi";
+import DashboardLayout from "../layouts/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
 
 const AppRoutes = () => {
   const isLoggedIn = !!localStorage.getItem("token");
@@ -15,11 +18,34 @@ const AppRoutes = () => {
       />
 
       {/* Public */}
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" element={<Login />} />
 
       {/* Protected */}
-      <Route path="/dashboard" element={<PrivateRoute />}>
-        <Route index element={<DashboardPage />} />
+      <Route path="/" element={<PrivateRoute />}>
+        <Route
+          path="/dashboard"
+          element={
+            <DashboardLayout>
+              <Dashboard />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/palaya-yaripadi"
+          element={
+            <DashboardLayout>
+              <PalayaYaripadi />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/puthiya-yaripadi"
+          element={
+            <DashboardLayout>
+              <PuthiyaYaripadi />
+            </DashboardLayout>
+          }
+        />
       </Route>
     </Routes>
   );

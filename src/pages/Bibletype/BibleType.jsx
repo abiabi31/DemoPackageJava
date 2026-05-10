@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { FiSave } from "react-icons/fi";
 import { useAutoTranslation } from "../../hooks/useAutoTranslation";
-import Navbar from "../../utils/Navbar/Navbar";
-// import GoogleTranslate from "../../utils/GoogleTranslate/GoogleTranslate";
 import "./style.css";
 
 const STORAGE_KEY = "dashboard-rows";
@@ -94,98 +92,81 @@ const BibleType = () => {
   );
 
   return (
-    <div className="dashboard-page">
-      <div className="dashboard-shell">
-        <Navbar />
-
-        <div className="user-panel">
-          {/* <div className="user-badge">
-            <span>👤</span>
-            <div>
-              <p>Signed in as</p>
-              <strong>{user?.username || "User"}</strong>
-            </div>
-          </div> */}
-          <div className="status-card">
-            <p>{translate("Status")}</p>
-            <strong>
-              {translate("{{completed}}/{{total}} completed", {
-                completed: completedCount,
-                total: rows.length,
-              })}
-            </strong>
-          </div>
+    <div className="bible-type-container">
+      <div className="user-panel">
+        <div className="status-card">
+          <p>{translate("Status")}</p>
+          <strong>
+            {translate("{{completed}}/{{total}} completed", {
+              completed: completedCount,
+              total: rows.length,
+            })}
+          </strong>
         </div>
-
-        {/* <GoogleTranslate /> */}
-
-        <section className="table-wrapper">
-          <table className="dashboard-table">
-            <thead>
-              <tr>
-                <th>{translate("Number")}</th>
-                <th>{translate("Date")}</th>
-                <th>{translate("Name")}</th>
-                <th>{translate("Status")}</th>
-                <th>{translate("Comment")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.id}>
-                  <td>{row.id}</td>
-                  <td>{row.date}</td>
-                  <td>{row.name}</td>
-                  <td>
-                    <label className="status-switch">
-                      <input
-                        type="checkbox"
-                        checked={row.completed}
-                        onChange={() => handleToggleComplete(row.id)}
-                      />
-                      <span>
-                        {row.completed
-                          ? translate("Completed")
-                          : translate("Pending")}
-                      </span>
-                    </label>
-                  </td>
-                  <td>
-                    <div className="comment-cell">
-                      <input
-                        type="text"
-                        value={row.comment}
-                        onChange={(event) =>
-                          handleCommentChange(row.id, event.target.value)
-                        }
-                        placeholder={translate("Enter comment")}
-                      />
-                      <div className="comment-actions">
-                        <button
-                          type="button"
-                          className="save-button"
-                          onClick={() => handleSaveComment(row.id)}
-                        >
-                          <FiSave /> {translate("Save")}
-                        </button>
-                        {savedRowId === row.id && (
-                          <span className="saved-badge">
-                            {translate("Saved")}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
-
-        <footer className="dashboard-footer">
-          {translate("© 2024 Dashboard Application")}
-        </footer>
       </div>
+
+      <section className="table-wrapper">
+        <table className="dashboard-table">
+          <thead>
+            <tr>
+              <th>{translate("Number")}</th>
+              <th>{translate("Date")}</th>
+              <th>{translate("Name")}</th>
+              <th>{translate("Status")}</th>
+              <th>{translate("Comment")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.id}>
+                <td>{row.id}</td>
+                <td>{row.date}</td>
+                <td>{row.name}</td>
+                <td>
+                  <label className="status-switch">
+                    <input
+                      type="checkbox"
+                      checked={row.completed}
+                      onChange={() => handleToggleComplete(row.id)}
+                    />
+                    <span>
+                      {row.completed
+                        ? translate("Completed")
+                        : translate("Pending")}
+                    </span>
+                  </label>
+                </td>
+                <td>
+                  <div className="comment-cell">
+                    <input
+                      type="text"
+                      value={row.comment}
+                      onChange={(event) =>
+                        handleCommentChange(row.id, event.target.value)
+                      }
+                      placeholder={translate("Enter comment")}
+                    />
+                    <div className="comment-actions">
+                      <button
+                        type="button"
+                        className="save-button"
+                        onClick={() => handleSaveComment(row.id)}
+                      >
+                        <FiSave /> {translate("Save")}
+                      </button>
+                      {savedRowId === row.id && (
+                        <span className="saved-badge">
+                          {translate("Saved")}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };
