@@ -1,30 +1,25 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import HomePage from "../pages/home/HomePage";
-import Blog from "../pages/Blog/Blog";
-import ContactPage from "../pages/ContactPage/ContactPage";
-import AboutPage from "../pages/aboutme/about";
-import LoginPage from "../login/login";
-import AdminPage from "../pages/admin/AdminPage";
-import Services from "../pages/ServicesPage/Services";
-import PrivateRoute from "./PrivateRoute";
+import LoginPage from "../pages/login/login";
+import DashboardPage from "../pages/dashboard/Dashboard";
+import PrivateRoute from "../routes/PrivateRoute";
 
 const AppRoutes = () => {
+  const isLoggedIn = !!localStorage.getItem("token");
+
   return (
     <Routes>
       {/* Default */}
-      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route
+        path="/"
+        element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} replace />}
+      />
 
-      {/* ✅ PUBLIC ROUTES */}
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/blogs" element={<Blog />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/about" element={<AboutPage />} />
+      {/* Public */}
       <Route path="/login" element={<LoginPage />} />
 
-      {/* 🔒 PROTECTED ROUTE */}
-      <Route element={<PrivateRoute />}>
-        <Route path="/admin" element={<AdminPage />} />
+      {/* Protected */}
+      <Route path="/dashboard" element={<PrivateRoute />}>
+        <Route index element={<DashboardPage />} />
       </Route>
     </Routes>
   );

@@ -1,0 +1,35 @@
+.verse-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.verse-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.verse-reference {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.verse-text {
+  margin: 0;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dark mode support */
+:root[data-theme="dark"] .verse-text {
+  color: #e0e0e0;
+}
+
+:root[data-theme="dark"] .verse-reference {
+  color: #a8b4ff;
+}

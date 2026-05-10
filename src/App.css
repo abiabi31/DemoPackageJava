@@ -1,141 +1,107 @@
+:root {
+  color-scheme: dark;
+  --app-header-height: 64px;
+  --bg: #020311;
+  --bg-soft: #0d1320;
+  --surface: rgba(10, 16, 30, 0.94);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --text: #eef4ff;
+  --muted: #a9b4ff;
+  --accent: #6c63ff;
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --bg-soft: #e2e8f0;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-strong: rgba(255, 255, 255, 1);
+  --text: #111827;
+  --muted: #4b5563;
+  --accent: #4f46e5;
+  --border: rgba(15, 23, 42, 0.08);
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+}
+
+:root[data-theme="dark"] {
+  --bg: #020311;
+  --bg-soft: #0d1320;
+  --surface: rgba(10, 16, 30, 0.94);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --text: #eef4ff;
+  --muted: #a9b4ff;
+  --accent: #6c63ff;
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+}
+
 body {
   margin: 0;
   overflow-x: hidden;
-  background: #020311;
+  background: linear-gradient(135deg, var(--bg), var(--bg-soft));
+  color: var(--text);
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
 }
 
-:root {
-  /* Header height */
-  --app-header-height: 64px;
+body,
+button,
+input,
+textarea {
+  font-family: inherit;
 }
 
 .app-shell {
   min-height: 100vh;
   position: relative;
-
-  /* Main dark futuristic background */
-  background:
-    radial-gradient(
-      1200px 600px at 70% -10%,
-      rgba(255, 215, 0, 0.08),
-      rgba(0, 0, 0, 0) 55%
-    ),
-    linear-gradient(135deg, #020311 0%, #0d1320 45%, #06101f 100%);
-
+  background: linear-gradient(135deg, var(--bg), var(--bg-soft));
+  color: var(--text);
   overflow-x: hidden;
 }
 
-/* Background futuristic layer */
-.app-shell::before {
-  content: "";
-  position: fixed;
-  inset: -20%;
-  pointer-events: none;
-  z-index: 0;
-
-  /* Optional image */
-  /* background-image: url("/images1.svg"); */
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  transform: perspective(900px) rotateX(18deg) rotateY(-12deg) translateY(-4%);
-
-  opacity: 0.06;
-  filter: blur(1px) saturate(1.1);
-}
-
-/* Top glow */
+.app-shell::before,
 .app-shell::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
+}
 
+.app-shell::before {
   background: radial-gradient(
-    circle at 50% 10%,
-    rgba(0, 242, 255, 0.07),
-    rgba(0, 0, 0, 0) 55%
+    circle at 70% 0%,
+    rgba(108, 99, 255, 0.15),
+    transparent 30%
+  );
+  opacity: 0.5;
+}
+
+.app-shell::after {
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(255, 255, 255, 0.12),
+    transparent 22%
   );
 }
-
-/* =========================
-   GLOBAL GLOBE
-========================= */
-
-.global-globe-wrap {
-  position: fixed;
-
-  top: calc(var(--app-header-height) + 30px);
-  left: 50%;
-
-  transform: translateX(-50%) scale(0.82);
-
-  width: clamp(220px, 30vw, 450px);
-
-  aspect-ratio: 1 / 1;
-
-  z-index: 0;
-
-  pointer-events: none;
-
-  opacity: 0.7;
-
-  mix-blend-mode: screen;
-}
-
-.global-globe-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-
-  border-radius: 50%;
-
-  opacity: 0.9;
-
-  filter: blur(0.3px) drop-shadow(0 10px 24px rgba(0, 210, 255, 0.1))
-    drop-shadow(0 0 10px rgba(255, 215, 0, 0.04));
-}
-
-/* =========================
-   MAIN CONTENT
-========================= */
 
 .app-main {
   position: relative;
   z-index: 1;
-
-  padding-top: var(--app-header-height);
-
+  /* padding-top: var(--app-header-height); */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 
-/* Footer above bg */
 .footer-container {
   position: relative;
   z-index: 1;
 }
 
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media (max-width: 100px) {
-  .global-globe-wrap {
-    width: clamp(180px, 58vw, 300px);
-
-    top: calc(var(--app-header-height) + 40px);
-
-    opacity: 0.55;
-
-    transform: translateX(-50%) scale(0.75);
-  }
-
-  .global-globe-canvas {
-    filter: blur(0.5px) drop-shadow(0 8px 18px rgba(0, 210, 255, 0.08));
+@media (max-width: 640px) {
+  .app-main {
+    padding-top: 56px;
   }
 }

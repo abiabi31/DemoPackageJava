@@ -1,0 +1,16 @@
+.bible-reader-page {
+  width: 100%;
+}
+
+.verses-section {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,56 @@
+.google-translate-widget {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+}
+
+.translate-header h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.translate-controls {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.translate-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.translate-controls textarea,
+.translate-controls select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.translate-controls button {
+  max-width: 200px;
+  padding: 0.9rem 1.25rem;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.translate-result {
+  margin-top: 1rem;
+  color: var(--text);
+}
+
+.translate-error {
+  color: #ff6b6b;
+}

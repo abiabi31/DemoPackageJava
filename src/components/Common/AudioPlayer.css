@@ -1,0 +1,15 @@
+.audio-player-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  z-index: 1000;
+}
+
+@media (max-width: 600px) {
+  .audio-player-container {
+    width: calc(100% - 20px);
+    right: 10px;
+    bottom: 10px;
+  }
+}
