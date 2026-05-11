@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { CircularProgress, Box } from "@mui/material";
-
-export const LoadingSpinner = ({ size = 40, fullscreen = false }) => {
+const LoadingSpinner = ({ size = 40, fullscreen = false }) => {
   if (fullscreen) {
     return (
       <Box

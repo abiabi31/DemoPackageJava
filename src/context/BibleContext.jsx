@@ -11,7 +11,13 @@ import {
   fetchChapters,
   fetchVerses,
   searchBibleVerses,
-} from "../services/bibleService";
+} from "../utils/services/bibleService";
+// import {
+//   fetchAllBooks,
+//   fetchChapters,
+//   fetchVerses,
+//   searchBibleVerses,
+// } from "../../services/bibleService";
 
 const BibleContext = createContext();
 
@@ -57,16 +63,24 @@ export const BibleProvider = ({ children }) => {
         setError(null);
 
         const booksData = await fetchAllBooks(bibleLanguage);
-        const updatedBook = booksData.find((book) => book.id === selectedBook.id);
+        const updatedBook = booksData.find(
+          (book) => book.id === selectedBook.id,
+        );
         if (updatedBook) {
           setSelectedBook((prev) => ({ ...prev, name: updatedBook.name }));
         }
 
-        const chaptersData = await fetchChapters(selectedBook.id, bibleLanguage);
+        const chaptersData = await fetchChapters(
+          selectedBook.id,
+          bibleLanguage,
+        );
         setChapters(chaptersData);
 
         if (selectedChapter) {
-          const versesData = await fetchVerses(selectedChapter.id, bibleLanguage);
+          const versesData = await fetchVerses(
+            selectedChapter.id,
+            bibleLanguage,
+          );
           setVerses(versesData);
         } else {
           setVerses([]);

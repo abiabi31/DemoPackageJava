@@ -9,11 +9,11 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useBible } from "../context/BibleContext";
-import SearchBar from "../components/Common/SearchBar";
-import { useDebounce } from "../hooks/useUtils";
-import { useAutoTranslation } from "../hooks/useAutoTranslation";
+import { useBible } from "../../context/BibleContext";
+import { useDebounce } from "../../hooks/useUtils";
 import "./SearchPage.css";
+import { useAutoTranslation } from "../../hooks/useAutoTranslation";
+import SearchBar from "../../utils/Common/SearchBar/SearchBar";
 
 export const SearchPage = () => {
   const { searchResults, isSearching, searchVerses, books } = useBible();
@@ -42,7 +42,9 @@ export const SearchPage = () => {
           {translate("Search Bible")}
         </Typography>
         <Typography variant="body1" sx={{ opacity: 0.7, mb: 3 }}>
-          {translate("Search for verses by book name, keywords, or references.")}
+          {translate(
+            "Search for verses by book name, keywords, or references.",
+          )}
         </Typography>
 
         <SearchBar

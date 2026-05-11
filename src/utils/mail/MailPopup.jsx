@@ -71,7 +71,7 @@ Salary: ${selectedRow?.salary || ""}
       message: messageBody,
     };
 
-    console.log("📤 Sending email with params:", templateParams);
+    // console.log("📤 Sending email with params:", templateParams);
 
     emailjs
       .send(
@@ -91,11 +91,6 @@ Salary: ${selectedRow?.salary || ""}
         });
 
         handleClose();
-      })
-      .catch((error) => {
-        console.log("❌ ERROR:", error);
-
-        alert("❌ Failed to send message");
       });
   };
 

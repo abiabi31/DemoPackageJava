@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { FiMoon, FiSun, FiGlobe, FiRotateCcw, FiTrash2 } from "react-icons/fi";
-import { useTheme } from "../context/ThemeContext";
-import { useTranslation } from "../context/TranslationContext";
-import { useBookmarks } from "../context/BookmarkContext";
-import { useRecentlyRead } from "../context/RecentlyReadContext";
-import { useAutoTranslation } from "../hooks/useAutoTranslation";
+import { useTheme } from "../../context/ThemeContext";
+import { useTranslation } from "../../context/TranslationContext";
+import { useBookmarks } from "../../context/BookmarkContext";
+import { useRecentlyRead } from "../../context/RecentlyReadContext";
+import { useAutoTranslation } from "../../hooks/useAutoTranslation";
 import "./SettingsPage.css";
 
 export const SettingsPage = () => {
@@ -98,11 +98,7 @@ export const SettingsPage = () => {
                     size="medium"
                   />
                 }
-                label={
-                  translate(
-                    theme === "dark" ? "Dark Mode" : "Light Mode",
-                  )
-                }
+                label={translate(theme === "dark" ? "Dark Mode" : "Light Mode")}
               />
               <Typography variant="body2" sx={{ opacity: 0.7, mt: 1 }}>
                 {translate("Toggle between light and dark theme")}
@@ -236,7 +232,9 @@ export const SettingsPage = () => {
                       size="small"
                       fullWidth
                       onClick={() => {
-                        if (window.confirm(translate("Clear reading history?"))) {
+                        if (
+                          window.confirm(translate("Clear reading history?"))
+                        ) {
                           clearRecentlyRead();
                         }
                       }}

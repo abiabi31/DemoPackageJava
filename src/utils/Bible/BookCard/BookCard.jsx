@@ -8,8 +8,7 @@ import {
 import { motion } from "framer-motion";
 import { FiBookOpen } from "react-icons/fi";
 import "./BookCard.css";
-
-export const BookCard = ({ book, onClick }) => {
+const BookCard = ({ book, onClick }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}

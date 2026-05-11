@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { FiSave } from "react-icons/fi";
 import { useAutoTranslation } from "../../hooks/useAutoTranslation";
-import Navbar from "../../utils/Navbar/Navbar";
 // import GoogleTranslate from "../../utils/GoogleTranslate/GoogleTranslate";
 import "./style.css";
 
@@ -96,8 +95,6 @@ const BibleType = () => {
   return (
     <div className="dashboard-page">
       <div className="dashboard-shell">
-        <Navbar />
-
         <div className="user-panel">
           {/* <div className="user-badge">
             <span>👤</span>
@@ -152,14 +149,15 @@ const BibleType = () => {
                   </td>
                   <td>
                     <div className="comment-cell">
-                      <input
-                        type="text"
+                      <textarea
+                        rows={5}
                         value={row.comment}
                         onChange={(event) =>
                           handleCommentChange(row.id, event.target.value)
                         }
                         placeholder={translate("Enter comment")}
                       />
+
                       <div className="comment-actions">
                         <button
                           type="button"
@@ -168,6 +166,7 @@ const BibleType = () => {
                         >
                           <FiSave /> {translate("Save")}
                         </button>
+
                         {savedRowId === row.id && (
                           <span className="saved-badge">
                             {translate("Saved")}

@@ -26,15 +26,6 @@ export const AudioProvider = ({ children }) => {
     const loadVoices = () => {
       const voices = speechSynthesis.getVoices();
       setAvailableVoices(voices);
-
-      if (voices.length > 0) {
-        console.log(
-          "Available voices:",
-          voices.map((v) => `${v.name} (${v.lang})`),
-        );
-      } else {
-        console.debug("No speech synthesis voices loaded yet.");
-      }
     };
 
     loadVoices();
@@ -99,19 +90,30 @@ export const AudioProvider = ({ children }) => {
 
         if (selectedVoice) {
           utterance.voice = selectedVoice;
-          utterance.lang = selectedVoice.lang || (language === "ta" ? "ta-IN" : "en-US");
+          utterance.lang =
+            selectedVoice.lang || (language === "ta" ? "ta-IN" : "en-US");
         } else {
           utterance.lang = language === "ta" ? "ta-IN" : "en-US";
-          console.warn("Speech synthesis voice not found; using default language.");
+          console.warn(
+            "Speech synthesis voice not found; using default language.",
+          );
         }
 
-        if (language === "ta" && selectedVoice && !selectedVoice.lang.toLowerCase().startsWith("ta")) {
+        if (
+          language === "ta" &&
+          selectedVoice &&
+          !selectedVoice.lang.toLowerCase().startsWith("ta")
+        ) {
           console.warn(
             "No Tamil-specific voice found, speaking Tamil text with an available English voice.",
           );
         }
 
-        if (language === "en" && selectedVoice && !selectedVoice.lang.toLowerCase().startsWith("en")) {
+        if (
+          language === "en" &&
+          selectedVoice &&
+          !selectedVoice.lang.toLowerCase().startsWith("en")
+        ) {
           console.warn(
             "Selected voice is not clearly English; continuing with the best available voice.",
           );
@@ -241,10 +243,14 @@ export const AudioProvider = ({ children }) => {
   );
 };
 
-export const useAudio = () => {
+const useAudio = () => {
   const context = useContext(AudioContext);
+
   if (!context) {
     throw new Error("useAudio must be used within AudioProvider");
   }
+
   return context;
 };
+
+export default useAudio;

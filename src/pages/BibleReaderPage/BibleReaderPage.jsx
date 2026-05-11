@@ -2,19 +2,18 @@ import { Box, Typography, Grid, Button, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { useBible } from "../context/BibleContext";
-import { useRecentlyRead } from "../context/RecentlyReadContext";
-import { useTranslation } from "../context/TranslationContext";
-import { useAutoTranslation } from "../hooks/useAutoTranslation";
-import BookCard from "../components/Bible/BookCard";
-import ChapterGrid from "../components/Bible/ChapterGrid";
-import VerseCard from "../components/Bible/VerseCard";
-import LoadingSpinner from "../components/Common/LoadingSpinner";
-import AudioPlayer from "../components/Common/AudioPlayer";
-import { usePagination } from "../hooks/useUtils";
+import { usePagination } from "../../hooks/useUtils";
 import "./BibleReaderPage.css";
-
-export const BibleReaderPage = () => {
+import { useBible } from "../../context/BibleContext";
+import { useRecentlyRead } from "../../context/RecentlyReadContext";
+import { useAutoTranslation } from "../../hooks/useAutoTranslation";
+import { useTranslation } from "../../context/TranslationContext";
+import VerseCard from "../../utils/Bible/VerseCard/VerseCard";
+import BookCard from "../../utils/Bible/BookCard/BookCard";
+import ChapterGrid from "../../utils/Bible/ChapterCard/ChapterGrid";
+import LoadingSpinner from "../../utils/Common/LoadingSpinner";
+import AudioPlayer from "../../utils/Common/Audio/AudioPlayer";
+const BibleReaderPage = () => {
   const {
     books,
     selectedBook,

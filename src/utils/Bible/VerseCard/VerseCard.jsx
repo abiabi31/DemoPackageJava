@@ -10,13 +10,13 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { FiCopy, FiBookmark, FiShare2 } from "react-icons/fi";
-import { useBookmarks } from "../../context/BookmarkContext";
-import { useRecentlyRead } from "../../context/RecentlyReadContext";
-import { useCopyToClipboard } from "../../hooks/useUtils";
-import { useAutoTranslation } from "../../hooks/useAutoTranslation";
 import "./VerseCard.css";
+import { useBookmarks } from "../../../context/BookmarkContext";
+import { useRecentlyRead } from "../../../context/RecentlyReadContext";
+import { useCopyToClipboard } from "../../../hooks/useUtils";
+import { useAutoTranslation } from "../../../hooks/useAutoTranslation";
 
-export const VerseCard = ({ verse, bookName, chapterNumber }) => {
+const VerseCard = ({ verse, bookName, chapterNumber }) => {
   const { isBookmarked, toggleBookmark } = useBookmarks();
   const { addToRecentlyRead } = useRecentlyRead();
   const { isCopied, copyToClipboard } = useCopyToClipboard();
@@ -96,7 +96,9 @@ export const VerseCard = ({ verse, bookName, chapterNumber }) => {
         </CardContent>
         <CardActions sx={{ justifyContent: "space-between", pt: 0 }}>
           <Box sx={{ display: "flex", gap: 0.5 }}>
-            <Tooltip title={isCopied ? translate("Copied!") : translate("Copy verse")}>
+            <Tooltip
+              title={isCopied ? translate("Copied!") : translate("Copy verse")}
+            >
               <IconButton
                 size="small"
                 onClick={(e) => {
@@ -110,7 +112,13 @@ export const VerseCard = ({ verse, bookName, chapterNumber }) => {
                 <FiCopy size={18} />
               </IconButton>
             </Tooltip>
-            <Tooltip title={bookmarked ? translate("Remove bookmark") : translate("Bookmark verse")}>
+            <Tooltip
+              title={
+                bookmarked
+                  ? translate("Remove bookmark")
+                  : translate("Bookmark verse")
+              }
+            >
               <IconButton
                 size="small"
                 onClick={(e) => {

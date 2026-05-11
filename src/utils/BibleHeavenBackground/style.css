@@ -1,0 +1,17 @@
+.bible-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0; /* BACKGROUND */
+  pointer-events: none; /* UI clickable */
+}
+
+/* ALL APP UI MUST BE ABOVE */
+.app-ui-layer {
+  position: relative;
+  z-index: 10;
+}

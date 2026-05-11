@@ -6,7 +6,7 @@
 
 .dashboard-shell {
   position: relative;
-  max-width: 1180px;
+  /* max-width: 1180px; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -324,7 +324,7 @@
   width: 18px;
   height: 18px;
 }
-
+/* 
 .comment-cell {
   display: grid;
   gap: 0.65rem;
@@ -361,7 +361,7 @@
 .saved-badge {
   color: var(--accent);
   font-size: 0.88rem;
-}
+} */
 
 .dashboard-footer {
   margin-top: 1.5rem;
@@ -401,4 +401,35 @@
   .dashboard-table {
     min-width: 100%;
   }
+}
+.comment-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.comment-cell input {
+  flex: 1;
+}
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  resize: vertical;
+}
+/* .comment-cell input {
+  flex: 1;
+  padding: 8px;
+} */
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.saved-badge {
+  color: green;
+  font-size: 14px;
 }

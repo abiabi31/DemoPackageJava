@@ -1,9 +1,9 @@
 import { Grid, Button, Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { useAutoTranslation } from "../../hooks/useAutoTranslation";
 import "./ChapterGrid.css";
+import { useAutoTranslation } from "../../../hooks/useAutoTranslation";
 
-export const ChapterGrid = ({ chapters, onSelectChapter, selectedChapterId }) => {
+const ChapterGrid = ({ chapters, onSelectChapter, selectedChapterId }) => {
   const translate = useAutoTranslation();
   const container = {
     hidden: { opacity: 0 },
@@ -38,7 +38,9 @@ export const ChapterGrid = ({ chapters, onSelectChapter, selectedChapterId }) =>
                 <Button
                   onClick={() => onSelectChapter(chapter.id, chapter.number)}
                   fullWidth
-                  variant={selectedChapterId === chapter.id ? "contained" : "outlined"}
+                  variant={
+                    selectedChapterId === chapter.id ? "contained" : "outlined"
+                  }
                   sx={{
                     background:
                       selectedChapterId === chapter.id
@@ -48,7 +50,8 @@ export const ChapterGrid = ({ chapters, onSelectChapter, selectedChapterId }) =>
                       selectedChapterId === chapter.id
                         ? "none"
                         : "2px solid rgba(102, 126, 234, 0.3)",
-                    color: selectedChapterId === chapter.id ? "white" : "inherit",
+                    color:
+                      selectedChapterId === chapter.id ? "white" : "inherit",
                     fontWeight: 600,
                     borderRadius: "12px",
                     transition: "all 0.3s ease",

@@ -8,12 +8,12 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { FiTrash2, FiBook } from "react-icons/fi";
-import { useBookmarks } from "../context/BookmarkContext";
-import { useAutoTranslation } from "../hooks/useAutoTranslation";
-import VerseCard from "../components/Bible/VerseCard";
+import { useBookmarks } from "../../context/BookmarkContext";
+import { useAutoTranslation } from "../../hooks/useAutoTranslation";
 import "./BookmarksPage.css";
+import VerseCard from "../../utils/Bible/VerseCard/VerseCard";
 
-export const BookmarksPage = () => {
+const BookmarksPage = () => {
   const { bookmarks, clearAllBookmarks } = useBookmarks();
   const translate = useAutoTranslation();
 

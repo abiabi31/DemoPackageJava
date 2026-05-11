@@ -1,9 +1,9 @@
 import { Box, Slider, Typography, IconButton, Card } from "@mui/material";
 import { FiPlay, FiPause, FiVolume2, FiX } from "react-icons/fi";
-import { useAudio } from "../../context/AudioContext";
-import { useAutoTranslation } from "../../hooks/useAutoTranslation";
 import { motion } from "framer-motion";
 import "./AudioPlayer.css";
+import useAudio from "../../../context/AudioContext";
+import { useAutoTranslation } from "../../../hooks/useAutoTranslation";
 
 const formatTime = (time) => {
   if (!time || isNaN(time)) return "0:00";
@@ -12,7 +12,7 @@ const formatTime = (time) => {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 };
 
-export const AudioPlayer = ({ audioUrl, title, onClose, text, language }) => {
+const AudioPlayer = ({ audioUrl, title, onClose, text, language }) => {
   const {
     isPlaying,
     currentTime,
@@ -24,7 +24,7 @@ export const AudioPlayer = ({ audioUrl, title, onClose, text, language }) => {
     stop,
     seek,
   } = useAudio();
-  const translate = useAutoTranslation();
+  const translate = useAutoTranslationn();
 
   if (!audioUrl && !text) return null;
 
@@ -119,7 +119,8 @@ export const AudioPlayer = ({ audioUrl, title, onClose, text, language }) => {
             }}
           >
             <Typography variant="body2" sx={{ fontSize: "12px" }}>
-              ⚠️ {translate(
+              ⚠️{" "}
+              {translate(
                 "Tamil voice not available. Will use English voice for Tamil text.",
               )}
             </Typography>

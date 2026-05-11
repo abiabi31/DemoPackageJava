@@ -2,8 +2,12 @@ import { TextField, InputAdornment, Box } from "@mui/material";
 import { FiSearch, FiX } from "react-icons/fi";
 import { motion } from "framer-motion";
 import "./SearchBar.css";
-
-export const SearchBar = ({ value, onChange, onClear, placeholder = "Search verses, books..." }) => {
+const SearchBar = ({
+  value,
+  onChange,
+  onClear,
+  placeholder = "Search verses, books...",
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -19,7 +23,8 @@ export const SearchBar = ({ value, onChange, onClear, placeholder = "Search vers
         className="search-bar"
         sx={{
           "& .MuiOutlinedInput-root": {
-            background: "linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))",
+            background:
+              "linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))",
             backdropFilter: "blur(10px)",
             border: "2px solid rgba(255, 255, 255, 0.2)",
             borderRadius: "12px",
@@ -28,11 +33,13 @@ export const SearchBar = ({ value, onChange, onClear, placeholder = "Search vers
               border: "none",
             },
             "&:hover": {
-              background: "linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15))",
+              background:
+                "linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15))",
               borderColor: "rgba(255, 255, 255, 0.3)",
             },
             "&.Mui-focused": {
-              background: "linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2))",
+              background:
+                "linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2))",
               borderColor: "rgba(102, 126, 234, 0.5)",
             },
           },
@@ -47,9 +54,7 @@ export const SearchBar = ({ value, onChange, onClear, placeholder = "Search vers
         InputProps={{
           startAdornment: (
             <InputAdornment position="start" sx={{ mr: 1 }}>
-              <motion.div
-                animate={{ rotate: value ? 0 : undefined }}
-              >
+              <motion.div animate={{ rotate: value ? 0 : undefined }}>
                 <FiSearch size={20} style={{ color: "#667eea" }} />
               </motion.div>
             </InputAdornment>

@@ -1,20 +1,26 @@
+// LoginPage.jsx
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useAutoTranslation } from "../../hooks/useAutoTranslation";
 import "./style.css";
-
-const DUMMY_PASSWORD = "dummy123";
+import { useLoginMutation } from "../../components/api/Login";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
+
   const { login } = useAuth();
+
   const translate = useAutoTranslation();
 
-  const handleSubmit = (event) => {
+  const [loginMutation] = useLoginMutation();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!username.trim()) {
@@ -22,62 +28,107 @@ const LoginPage = () => {
       return;
     }
 
-    if (password !== DUMMY_PASSWORD) {
-      setError(translate("Invalid password. Use dummy password: dummy123"));
-      return;
-    }
+    try {
+      const body = {
+        username: username.trim(),
+        password: password,
+      };
 
-    login({ username: username.trim() });
-    navigate("/dashboard", { replace: true });
+      const response = await loginMutation({ body }).unwrap();
+
+      if (response) {
+        login(response);
+
+        navigate("/dashboard", { replace: true });
+      }
+    } catch (error) {
+      setError(translate("Login failed. Please try again."));
+    }
   };
 
   return (
-    <div className="login-page">
-      <div className="login-card">
-        <h1>{translate("Login")}</h1>
-        <p className="login-subtitle">
-          {translate(
-            "Enter your username and the dummy password to access the dashboard.",
-          )}
-        </p>
+    <div className="modern-login-page">
+      <div className="modern-login-container">
+        {/* LEFT SIDE */}
+        <div className="modern-login-left">
+          <div className="overlay"></div>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <label className="login-label">
-            {translate("Username")}
-            <input
-              type="text"
-              value={username}
-              onChange={(event) => {
-                setUsername(event.target.value);
-                setError("");
-              }}
-              placeholder={translate("Your username")}
-              required
-            />
-          </label>
+          <div className="left-content">
+            <h1>Bible App</h1>
 
-          <label className="login-label">
-            {translate("Password")}
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-                setError("");
-              }}
-              placeholder={translate("dummy123")}
-            />
-          </label>
+            <p>
+              Read, search, bookmark, and explore the Word of God with a
+              beautiful modern experience.
+            </p>
 
-          {error && <div className="login-error">{error}</div>}
+            <div className="left-icon">📖</div>
+          </div>
+        </div>
 
-          <button type="submit" className="login-button">
-            {translate("Login")}
-          </button>
-        </form>
+        {/* RIGHT SIDE */}
+        <div className="modern-login-right">
+          <div className="login-box">
+            <h2>{translate("Welcome Back")}</h2>
 
-        <div className="login-hint">
-          {translate("Hint: use password dummy123")}
+            <p className="subtitle">{translate("Login to continue")}</p>
+
+            <form onSubmit={handleSubmit} className="modern-login-form">
+              {/* USERNAME */}
+              <div className="input-box">
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    setError("");
+                  }}
+                  placeholder={translate("Username")}
+                  required
+                />
+              </div>
+
+              {/* PASSWORD */}
+              <div className="input-box">
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setError("");
+                  }}
+                  placeholder={translate("Password")}
+                />
+              </div>
+
+              {/* ERROR */}
+              {error && <div className="modern-login-error">{error}</div>}
+
+              {/* LOGIN BUTTON */}
+              <button type="submit" className="modern-login-btn">
+                {translate("Login")}
+              </button>
+
+              {/* FOOTER */}
+              <div className="login-footer">
+                <button
+                  type="button"
+                  className="signup-btn"
+                  onClick={() => navigate("/signup")}
+                >
+                  {translate("Create Account")}
+                </button>
+
+                <button
+                  type="button"
+                  className="forgot-btn"
+                  onClick={() => navigate("/forgotPassword")}
+                >
+                  <span className="btn-icon">🤔</span>
+                  {translate("Forgot Password?")}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
