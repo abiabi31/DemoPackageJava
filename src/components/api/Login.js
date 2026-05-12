@@ -4,14 +4,28 @@ export const authApi = BaseApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: ({ body }) => ({
-        url: "/login",
+        url: "users/login ",
         method: "POST",
         body,
       }),
     }),
-    SignupPage: builder.mutation({
+    signupPage: builder.mutation({
       query: ({ body }) => ({
         url: "/users",
+        method: "POST",
+        body,
+      }),
+    }),
+    forgotPage: builder.mutation({
+      query: ({ body }) => ({
+        url: "users/send-otp ",
+        method: "POST",
+        body,
+      }),
+    }),
+    resetPasswordPage: builder.mutation({
+      query: ({ body }) => ({
+        url: "users/reset-password ",
         method: "POST",
         body,
       }),
@@ -19,4 +33,9 @@ export const authApi = BaseApi.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useSignupPageMutation } = authApi;
+export const {
+  useLoginMutation,
+  useSignupPageMutation,
+  useForgotPageMutation,
+  useResetPasswordPageMutation,
+} = authApi;

@@ -9,7 +9,6 @@
 .modern-login-page {
   width: 100%;
   min-height: 100vh;
-  background: #0f172a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,21 +29,106 @@
 }
 
 /* LEFT SIDE */
+/* 3D SHARP HEAVEN BACKGROUND */
 .modern-login-left {
   flex: 1;
   position: relative;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px;
-  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #fff8d6 0%,
+    #ffe066 35%,
+    #ffd700 60%,
+    #b8860b 100%
+  );
+
+  /* 3D perspective */
+  perspective: 1200px;
 }
 
+/* SHARP LIGHT BEAMS (NO ROUND SHAPES) */
+.modern-login-left::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.18) 0px,
+    rgba(255, 215, 0, 0.08) 6px,
+    transparent 12px,
+    transparent 20px
+  );
+
+  animation: beamMove 6s linear infinite;
+  transform: rotateX(35deg) rotateY(-10deg);
+}
+
+/* SECOND LAYER DEPTH */
+.modern-login-left::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: repeating-linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0.12) 0px,
+    rgba(255, 215, 0, 0.05) 8px,
+    transparent 14px,
+    transparent 24px
+  );
+
+  animation: beamMove2 10s linear infinite;
+  transform: rotateX(50deg) rotateY(15deg);
+  opacity: 0.7;
+}
+
+/* OVERLAY (SHARP GOD LIGHT GRID) */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.15);
+
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 215, 0, 0.08) 2px,
+    transparent 6px
+  );
+
+  animation: gridMove 8s linear infinite;
+  mix-blend-mode: overlay;
+}
+
+/* ANIMATIONS */
+@keyframes beamMove {
+  0% {
+    transform: translateX(-10%) rotateX(35deg) rotateY(-10deg);
+  }
+  100% {
+    transform: translateX(10%) rotateX(35deg) rotateY(-10deg);
+  }
+}
+
+@keyframes beamMove2 {
+  0% {
+    transform: translateX(10%) rotateX(50deg) rotateY(15deg);
+  }
+  100% {
+    transform: translateX(-10%) rotateX(50deg) rotateY(15deg);
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
 }
 
 .left-content {
@@ -69,6 +153,10 @@
 .left-icon {
   font-size: 90px;
   margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 /* RIGHT SIDE */
@@ -133,8 +221,8 @@
   padding: 15px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
+  background: linear-gradient(135deg, #fff2a6, #ffd700, #b8860b);
+  color: rgb(46, 44, 44);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -160,7 +248,6 @@
   margin-top: 10px;
 }
 
-.signup-btn,
 .forgot-btn {
   border: none;
   background: none;
@@ -168,16 +255,10 @@
   font-size: 14px;
 }
 
-.signup-btn {
-  color: #667eea;
-  font-weight: 600;
-}
-
 .forgot-btn {
   color: #64748b;
 }
 
-.signup-btn:hover,
 .forgot-btn:hover {
   text-decoration: underline;
 }
@@ -202,12 +283,11 @@
     font-size: 36px;
   }
 
+  .forgot-btn {
+    color: #64748b;
+  }
   .left-content p {
     font-size: 15px;
-  }
-
-  .left-icon {
-    font-size: 70px;
   }
 
   .modern-login-right {
@@ -256,4 +336,26 @@
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+}
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }

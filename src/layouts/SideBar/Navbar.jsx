@@ -10,23 +10,55 @@ import {
   Divider,
   useTheme,
   useMediaQuery,
+  Button,
 } from "@mui/material";
-import { FiMenu, FiLogOut, FiSettings, FiSun, FiMoon } from "react-icons/fi";
+
+import {
+  FiMenu,
+  FiLogOut,
+  FiSettings,
+  FiSun,
+  FiMoon,
+  FiHome,
+  FiBook,
+  FiSearch,
+  FiBookmark,
+} from "react-icons/fi";
+
+import { FaBible } from "react-icons/fa";
+
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useTheme as useAppTheme } from "../../context/ThemeContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const menuItems = [
+  { path: "/dashboard", icon: FiHome, label: "Dashboard" },
+  {
+    path: "/dashboard/bibletype",
+    icon: FaBible,
+    label: "Bible",
+  },
+  { path: "/dashboard/reader", icon: FiBook, label: "Bible Reader" },
+  { path: "/dashboard/search", icon: FiSearch, label: "Search" },
+  { path: "/dashboard/bookmarks", icon: FiBookmark, label: "Bookmarks" },
+];
 
 const Navbar = ({ onMenuClick }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const user1 = useSelector((state) => state.user.data);
 
+  console.log("Redux user:", user1);
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useAppTheme();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const muiTheme = useTheme();
-  const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
+
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down("md"));
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,7 +85,6 @@ const Navbar = ({ onMenuClick }) => {
 
   return (
     <>
-      {/* FIXED NAVBAR */}
       <AppBar
         position="fixed"
         sx={{
@@ -67,7 +98,6 @@ const Navbar = ({ onMenuClick }) => {
               : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
           boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
           backdropFilter: "blur(10px)",
-          transition: "all 0.3s ease",
         }}
       >
         <Toolbar
@@ -79,40 +109,75 @@ const Navbar = ({ onMenuClick }) => {
             px: { xs: 1, sm: 2 },
           }}
         >
-          {/* LEFT SIDE */}
+          {/* LEFT */}
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: 1,
+              gap: 2,
             }}
           >
-            <IconButton
-              onClick={onMenuClick}
-              sx={{
-                color: "white",
-                "&:hover": {
-                  background: "rgba(255,255,255,0.1)",
-                },
-              }}
-            >
-              <FiMenu size={24} />
-            </IconButton>
+            {/* MOBILE MENU BUTTON */}
+            {isMobile && (
+              <IconButton
+                onClick={onMenuClick}
+                sx={{
+                  color: "white",
+                  "&:hover": {
+                    background: "rgba(255,255,255,0.1)",
+                  },
+                }}
+              >
+                <FiMenu size={24} />
+              </IconButton>
+            )}
 
-            {/* <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                color: "white",
-                fontSize: { xs: "1rem", sm: "1.2rem" },
-                letterSpacing: "0.5px",
-              }}
-            >
-              Dashboard
-            </Typography> */}
+            {/* DESKTOP NAV ITEMS */}
+            {!isMobile && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                }}
+              >
+                {menuItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.path;
+
+                  return (
+                    <Button
+                      key={item.path}
+                      onClick={() => navigate(item.path)}
+                      startIcon={<Icon size={18} />}
+                      sx={{
+                        color: "white",
+                        px: 2,
+                        py: 1,
+                        borderRadius: "12px",
+                        textTransform: "none",
+                        fontWeight: isActive ? 700 : 500,
+                        background: isActive
+                          ? "rgba(255,255,255,0.18)"
+                          : "transparent",
+                        border: isActive
+                          ? "1px solid rgba(255,255,255,0.25)"
+                          : "1px solid transparent",
+                        transition: "0.3s ease",
+                        "&:hover": {
+                          background: "rgba(255,255,255,0.12)",
+                        },
+                      }}
+                    >
+                      {item.label}
+                    </Button>
+                  );
+                })}
+              </Box>
+            )}
           </Box>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT */}
           <Box
             sx={{
               display: "flex",
@@ -188,20 +253,28 @@ const Navbar = ({ onMenuClick }) => {
           }}
         >
           {/* USERNAME */}
-          <MenuItem disabled>
+          <MenuItem
+            disableGutters
+            sx={{
+              opacity: 1,
+              py: 1,
+            }}
+          >
             <Typography
               variant="subtitle2"
               sx={{
                 fontWeight: 700,
                 color: theme === "dark" ? "white" : "black",
+                letterSpacing: "0.3px",
+                textShadow: "none",
+                ml: 2,
               }}
             >
-              {user?.username}
+              {user1?.userId}
             </Typography>
           </MenuItem>
 
           <Divider sx={{ opacity: 0.2 }} />
-
           {/* SETTINGS */}
           <MenuItem
             onClick={() => {
@@ -215,9 +288,7 @@ const Navbar = ({ onMenuClick }) => {
             <FiSettings size={18} style={{ marginRight: "10px" }} />
             Settings
           </MenuItem>
-
           <Divider sx={{ opacity: 0.2 }} />
-
           {/* LOGOUT */}
           <MenuItem
             onClick={handleLogout}
@@ -231,7 +302,6 @@ const Navbar = ({ onMenuClick }) => {
         </Menu>
       </AppBar>
 
-      {/* PAGE TOP SPACE */}
       <Toolbar />
     </>
   );

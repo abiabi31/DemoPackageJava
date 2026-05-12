@@ -53,7 +53,7 @@ const SignupPage = () => {
 
       console.log(payload);
 
-      const response = await signup(payload).unwrap();
+      const response = await signup({ body: payload }).unwrap();
       console.log(response);
 
       navigate("/login");

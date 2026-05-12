@@ -8,9 +8,9 @@ import PrivateRoute from "../routes/PrivateRoute";
 import BibleReaderPage from "../pages/BibleReaderPage/BibleReaderPage";
 import SettingsPage from "../utils/SettingsPage/SettingsPage";
 import BibleType from "../pages/Bibletype/BibleType";
-import LoginPage from "../pages/login/login";
 import SignupPage from "../pages/SignupPage/SignupPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage/ForgotPassword";
+import LoginPage from "../pages/login/LoginPage";
 
 const AppRoutes = () => {
   const isLoggedIn = !!localStorage.getItem("token");

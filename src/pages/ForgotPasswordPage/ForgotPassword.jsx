@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff, FiMail, FiLock } from "react-icons/fi";
 import "./style.css";
+import {
+  useForgotPageMutation,
+  useResetPasswordPageMutation,
+} from "../../components/api/Login";
 
 const ForgotPasswordPage = () => {
   const navigate = useNavigate();
@@ -12,7 +16,8 @@ const ForgotPasswordPage = () => {
   // PASSWORD VIEW
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+  const [forget] = useForgotPageMutation();
+  const [resetPassword] = useResetPasswordPageMutation();
   // LOADING
   const [loading, setLoading] = useState(false);
 
@@ -46,14 +51,11 @@ const ForgotPasswordPage = () => {
     try {
       setLoading(true);
 
-      // API CALL
-      // await forgotPassword({
-      //   email: form.email,
-      // }).unwrap();
-
-      console.log({
-        email: form.email,
-      });
+      const response = await forget({
+        body: {
+          email: form.email,
+        },
+      }).unwrap();
 
       setSuccess("OTP sent successfully to your email");
 
@@ -72,7 +74,7 @@ const ForgotPasswordPage = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
-    setError("");
+    // setEruseForgotPageMutationror("");
     setSuccess("");
 
     // PASSWORD MATCH
@@ -88,15 +90,18 @@ const ForgotPasswordPage = () => {
         email: form.email,
         otp: form.otp,
         newPassword: form.newPassword,
-        confirmPassword: form.confirmPassword,
+        // confirmPassword: form.confirmPassword,
       };
 
-      console.log(payload);
+      // console.log(payload);
+      const response = await resetPassword({
+        body: payload,
+      }).unwrap();
 
       // API CALL
       // await resetPassword(payload).unwrap();
 
-      setSuccess("Password reset successful");
+      setSuccess("Password reset succeforgetssful");
 
       setTimeout(() => {
         navigate("/login");
