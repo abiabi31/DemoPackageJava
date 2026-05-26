@@ -154,7 +154,7 @@ const ForgotPasswordPage = () => {
 
               {success && <div className="success-text">{success}</div>}
 
-              <button type="submit" className="forgot-btn" disabled={loading}>
+              <button type="submit" className="Send-btn" disabled={loading}>
                 {loading ? "Sending..." : "Send OTP"}
               </button>
             </form>
@@ -241,7 +241,7 @@ const ForgotPasswordPage = () => {
 
               {success && <div className="success-text">{success}</div>}
 
-              <button type="submit" className="forgot-btn" disabled={loading}>
+              <button type="submit" className="Send-btn" disabled={loading}>
                 {loading ? "Resetting..." : "Reset Password"}
               </button>
 
