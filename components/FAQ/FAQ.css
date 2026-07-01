@@ -1,0 +1,6 @@
+.faq-item {
+  transition: background-color 0.3s ease;
+}
+.faq-item:hover {
+  background-color: rgba(20, 184, 166, 0.05);
+}
